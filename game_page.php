@@ -68,12 +68,13 @@
         <!-- End of Quantity -->
 
         <!-- Start of Add to Cart -->
-        <div class="my-8">
+        <a href="./cart.php" class="my-8">
+
           <button class="bg-primary px-4 text-sm md:px-8 py-2 rounded-md hover:opacity-85 duration-300 w-full">
             <i class="fi fi-rr-shopping-cart mr-1 "></i>
             Add to Cart
           </button>
-        </div>
+        </a>
         <!-- End of Add to Cart -->
       </section>
       <!-- End of buying -->

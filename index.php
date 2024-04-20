@@ -64,37 +64,38 @@
     <?php
     for ($i = 0; $i < 4; $i++) {
       echo ('
-              <a href="./game_page.php">
       <!-- Game Card -->
-      <div class="bg-secondaryBlack rounded-xl overflow-hidden duration-300 hover:scale-[1.02] cursor-pointer">
-        <img class="w-full " src="https://image.api.playstation.com/vulcan/ap/rnd/202312/0117/315718bce7eed62e3cf3fb02d61b81ff1782d6b6cf850fa4.png" alt="">
-        <div class="p-4 flex flex-col ">
-          <h3 class="text-lg font-bold">Horizon Forbidden West</h3>
-          <p class="text-base  text-primary">179 SR</p>
-          <!-- Platforms -->
-          <div class="flex items-center text-gray-400 gap-x-4 mt-1 flex-wrap">
-            <img class="w-8 h-8" src="./src/icons/playstation5-icon.svg" alt="">
-            <img class="w-8 h-8" src="./src/icons/playstation4-icon.svg" alt="">
-            <img class="w-4 h-4" src="./src/icons/windows-icon.svg" alt="">
-            <img class="w-4 h-4" src="./src/icons/xbox-icon.svg" alt="">
-            <img class="w-8 h-8" src="./src/icons/macos-icon.svg" alt="">
-          </div>
-
+                <a href="./game_page.php">
+    <div class="bg-secondaryBlack rounded-xl overflow-hidden duration-300 hover:scale-[1.02] cursor-pointer">
+      <img class="w-full " src="https://image.api.playstation.com/vulcan/ap/rnd/202312/0117/315718bce7eed62e3cf3fb02d61b81ff1782d6b6cf850fa4.png" alt="">
+      <div class="p-4 flex flex-col ">
+        <h3 class="text-lg font-bold">Horizon Forbidden West</h3>
+        <p class="text-base  text-primary">179 SR</p>
+        <!-- Platforms -->
+        <div class="flex items-center text-gray-400 gap-x-4 mt-1 flex-wrap">
+          <img class="w-8 h-8" src="./src/icons/playstation5-icon.svg" alt="">
+          <img class="w-8 h-8" src="./src/icons/playstation4-icon.svg" alt="">
+          <img class="w-4 h-4" src="./src/icons/windows-icon.svg" alt="">
+          <img class="w-4 h-4" src="./src/icons/xbox-icon.svg" alt="">
+          <img class="w-8 h-8" src="./src/icons/macos-icon.svg" alt="">
+        </div>
+        
           <button class="bg-primary px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300 mt-4 w-full">
             <i class="fi fi-rr-shopping-cart mr-1 "></i>
             Add to Cart
           </button>
-
-        </div>
+    
       </div>
-    </a>
-    <!-- End of Game Card -->
+    </div>
+  </a>
+  <!-- End of Game Card -->
       ');
     }
 
     ?>
 
   </div>
+
 </section>
 <!-- End of Featured Games Section -->
 

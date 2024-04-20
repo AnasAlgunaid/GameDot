@@ -1,4 +1,7 @@
-<footer class="text-center text-gray-300 py-4">
+<footer class="text-center text-gray-300 py-4 ">
+  <a href="./contactus.php" class="my-2 text-primary font-bold">
+    Contact us
+  </a>
   <p>
     &copy; <?php echo date("Y") ?> Gamedot. All rights reserved.
   </p>
@@ -26,6 +29,8 @@
 
   });
 </script>
+
+
 </body>
 
 </html>

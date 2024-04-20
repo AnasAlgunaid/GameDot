@@ -11,15 +11,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+
+
   <title><?php echo $pageTitle ?></title>
 
 </head>
 
 <body class="bg-myBlack text-white font-Roboto">
+
   <header class="py-4 px-8 mb-4 xl:container mx-auto ">
     <nav class=" flex justify-between items-center  ">
       <h1 class="font-bold text-2xl ">
-        <a href="./index.php">Gamedot</a>
+        <a href="">Gamedot</a>
       </h1>
       <button class="sm:hidden">
         <i class="fi fi-rr-menu-burger text-2xl hover:opacity-85 hover:scale-[1.02] duration-300"></i>
