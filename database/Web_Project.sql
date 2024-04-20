@@ -1,5 +1,5 @@
 CREATE TABLE `games` (
-  `game_id` integer PRIMARY KEY,
+  `game_id` integer PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `description` text,
   `main_image_url` varchar(255),
@@ -7,7 +7,7 @@ CREATE TABLE `games` (
 );
 
 CREATE TABLE `users` (
-  `user_id` integer PRIMARY KEY,
+  `user_id` integer PRIMARY KEY AUTO_INCREMENT,
   `fname` varchar(255),
   `lname` varchar(255),
   `email` varchar(255) UNIQUE,
@@ -16,7 +16,7 @@ CREATE TABLE `users` (
 );
 
 CREATE TABLE `admins` (
-  `admin_id` integer PRIMARY KEY,
+  `admin_id` integer PRIMARY KEY AUTO_INCREMENT,
   `fname` varchar(255),
   `lname` varchar(255),
   `email` varchar(255) UNIQUE,
@@ -24,39 +24,43 @@ CREATE TABLE `admins` (
 );
 
 CREATE TABLE `platforms` (
-  `platform_id` integer PRIMARY KEY,
+  `platform_id` integer PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255)
 );
 
 CREATE TABLE `game_platforms` (
-  `game_id` integer UNIQUE,
-  `platform_id` integer UNIQUE,
+  `game_id` integer,
+  `platform_id` integer,
   `price` float,
-  `release_date` date
+  `release_date` date,
+  PRIMARY KEY (game_id, platform_id)
 );
 
 CREATE TABLE `genres` (
-  `genre_id` integer PRIMARY KEY,
+  `genre_id` integer PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255)
 );
 
 CREATE TABLE `game_genres` (
   `game_id` integer,
-  `genre_id` integer
+  `genre_id` integer,
+  PRIMARY KEY (game_id, genre_id)
+  
 );
 
 CREATE TABLE `languages` (
-  `language_id` integer PRIMARY KEY,
+  `language_id` integer PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255)
 );
 
 CREATE TABLE `game_languages` (
   `game_id` integer,
-  `language_id` integer
+  `language_id` integer,
+  PRIMARY KEY (game_id, language_id)
 );
 
 CREATE TABLE `offers` (
-  `offer_id` integer PRIMARY KEY,
+  `offer_id` integer PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `discount_percentage` float,
   `start_date` date,
@@ -65,23 +69,24 @@ CREATE TABLE `offers` (
 );
 
 CREATE TABLE `game_offers` (
-  `game_offer_id` integer PRIMARY KEY,
   `game_id` integer,
-  `offer_id` integer
+  `offer_id` integer,  
+  PRIMARY KEY (game_id, offer_id)
 );
 
 CREATE TABLE `publishers` (
-  `publisher_id` integer PRIMARY KEY,
+  `publisher_id` integer PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255)
 );
 
 CREATE TABLE `game_publisher` (
-  `game_id` integer UNIQUE,
-  `publisher_id` integer UNIQUE
+  `game_id` integer,
+  `publisher_id` integer,
+  PRIMARY KEY (game_id, publisher_id)
 );
 
 CREATE TABLE `reviews` (
-  `review_id` integer PRIMARY KEY,
+  `review_id` integer PRIMARY KEY AUTO_INCREMENT,
   `game_id` integer,
   `user_id` integer,
   `rating` integer,
@@ -91,25 +96,25 @@ CREATE TABLE `reviews` (
 );
 
 CREATE TABLE `media` (
-  `media_id` integer PRIMARY KEY,
+  `media_id` integer PRIMARY KEY AUTO_INCREMENT,
   `game_id` integer,
   `media_url` varchar(255)
 );
 
 CREATE TABLE `carts` (
-  `cart_id` integer PRIMARY KEY,
+  `cart_id` integer PRIMARY KEY AUTO_INCREMENT,
   `user_id` integer
 );
 
 CREATE TABLE `cart_items` (
-  `cart_item_id` integer PRIMARY KEY,
+  `cart_item_id` integer PRIMARY KEY AUTO_INCREMENT,
   `cart_id` integer,
   `game_id` integer,
   `quantity` integer
 );
 
 CREATE TABLE `orders` (
-  `order_id` integer PRIMARY KEY,
+  `order_id` integer PRIMARY KEY AUTO_INCREMENT,
   `user_id` integer,
   `total_price` float,
   `order_date` date,
@@ -117,7 +122,7 @@ CREATE TABLE `orders` (
 );
 
 CREATE TABLE `order_items` (
-  `order_item_id` integer PRIMARY KEY,
+  `order_item_id` integer PRIMARY KEY AUTO_INCREMENT,
   `game_id` integer,
   `order_id` integer,
   `quantity` integer,
