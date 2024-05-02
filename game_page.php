@@ -127,9 +127,118 @@
     </div>
     <!-- End of Release Date information -->
 
+    <!-- Start of Similar Games -->
+    <section>
+      <h2 class="text-2xl font-bold mb-4 inline-block relative pb-1">
+        Similar Games
+        <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
+      </h2>
+      <div class="glider-contain">
+        <div class="glider">
+          <?php
+          for ($i = 0; $i < 100; $i++) {
+            echo ('
+                      <a href="./game_page.php">
+          <!-- Game Card -->
+          <div class="bg-secondaryBlack rounded-xl overflow-hidden duration-300 hover:scale-[1.02] cursor-pointer mx-2">
+            <img class="w-full " src="https://image.api.playstation.com/vulcan/ap/rnd/202312/0117/315718bce7eed62e3cf3fb02d61b81ff1782d6b6cf850fa4.png" alt="">
+            <div class="p-4 flex flex-col ">
+              <h3 class="text-lg font-bold">Horizon Forbidden West</h3>
+              <p class="text-base  text-primary">179 SR</p>
+              <!-- Platforms -->
+              <div class="flex items-center text-gray-400 gap-x-4 mt-1 flex-wrap">
+                <img class="w-8 h-8" src="./src/icons/playstation5-icon.svg" alt="">
+                <img class="w-8 h-8" src="./src/icons/playstation4-icon.svg" alt="">
+                <img class="w-4 h-4" src="./src/icons/windows-icon.svg" alt="">
+                <img class="w-4 h-4" src="./src/icons/xbox-icon.svg" alt="">
+                <img class="w-8 h-8" src="./src/icons/macos-icon.svg" alt="">
+              </div>
+
+              <button class="bg-primary px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300 mt-4 w-full">
+                <i class="fi fi-rr-shopping-cart mr-1 "></i>
+                Add to Cart
+              </button>
+
+            </div>
+          </div>
+        </a>
+      ');
+          }
+
+          ?>
+        </div>
+
+        <button aria-label="Previous" class="glider-prev "><i class="fi fi-rr-angle-small-left"></i></button>
+        <button aria-label="Next" class="glider-next"><i class="fi fi-rr-angle-small-right"></i></button>
+        <div role="tablist" class="dots"></div>
+      </div>
+    </section>
+    <!-- End of Similar Games -->
+
+    <!-- Start of Reviews -->
+    <section class="my-16">
+      <h2 class="text-2xl font-bold mb-4 inline-block relative pb-1">
+        Reviews
+        <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
+      </h2>
+
+      <!-- Create Average Review Section -->
+      <div class="flex items-center justify-center gap-1 flex-col mb-8 mt-4">
+        <div class="flex items-center gap-2">
+          <i class="fi fi-sr-star text-yellow-400 text-5xl"></i>
+          <p class="text-gray-300 text-5xl font-bold">4.5 / 5 </p>
+        </div>
+        <p class="text-gray-400">Based on 100 Reviews</p>
+
+      </div>
+      <!-- End of Average Review Section -->
+
+      <?php
+      for ($i = 0; $i < 5; $i++) {
+        echo ('
+              <!-- Start of Review Card -->
+      <div class="bg-secondaryBlack rounded-2xl my-4">
+        <!-- User Info -->
+        <div class="flex items-center  p-4 border-b border-gray-800">
+          <div class="w-12 h-12 flex-shrink-0 rounded-full bg-primary flex justify-center items-center text-xl">A</div>
+          <div class="ml-4 w-full">
+            <div class="flex justify-between items-center w-full flex-wrap">
+              <h3 class="text-lg font-bold">Anas Algunaid</h3>
+              <p class="text-gray-400">18/02/2022</p>
+            </div>
+
+            <!-- Rating -->
+            <div class="flex justify-start items-center gap-2">
+              <i class="fi fi-sr-star text-yellow-400"></i>
+              <i class="fi fi-sr-star text-yellow-400"></i>
+              <i class="fi fi-sr-star text-yellow-400"></i>
+              <i class="fi fi-sr-star text-yellow-400"></i>
+              <i class="fi fi-sr-star text-slate-500"></i>
+            </div>
+
+
+          </div>
 
 
 
+        </div>
+        <!-- End of User Info -->
+        <!-- Review Content -->
+        <div class="p-4">
+          <p class="text-gray-300">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit
+          </p>
+        </div>
+        <!-- End of Review Content -->
+      </div>
+      <!-- End of Review Card -->
+        ');
+      }
+      ?>
+
+
+
+    </section>
   </div>
 
 </main>
