@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
 
 
-  <title><?php echo $pageTitle ?></title>
+  <title><?php echo isset($pageTitle) ? $pageTitle : "GameDot" ?></title>
 
 </head>
 

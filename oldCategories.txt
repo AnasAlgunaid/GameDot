@@ -1,0 +1,17 @@
+  <div class="grid grid-cols-1 min-[320px]:grid-cols-2 min-[540px]:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 text-lg sm:text-xl md:text-2xl">
+    <div class="h-40 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg  flex justify-center items-center font-bold hover:scale-[1.02] cursor-pointer duration-300 ">
+      Action
+    </div>
+    <div class="h-40 bg-gradient-to-r from-red-500 to-orange-500 rounded-lg  flex justify-center items-center font-bold hover:scale-[1.02] cursor-pointer duration-300">
+      Strategy
+    </div>
+    <div class="h-40 bg-gradient-to-r from-emerald-900 to-emerald-500 rounded-lg  flex justify-center items-center font-bold hover:scale-[1.02] cursor-pointer duration-300 ">
+      Adventure
+    </div>
+    <div class="h-40 bg-gradient-to-r from-red-500 to-rose-400 rounded-lg  flex justify-center items-center font-bold hover:scale-[1.02] cursor-pointer duration-300">
+      Simulation
+    </div>
+    <div class="h-40 bg-gradient-to-r from-fuchsia-600 to-purple-600 rounded-lg  flex justify-center items-center font-bold hover:scale-[1.02] cursor-pointer duration-300">
+      Puzzle
+    </div>
+  </div>

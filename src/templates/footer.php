@@ -39,8 +39,8 @@
         next: '.glider-next'
       },
       responsive: [{
-        // screens greater than >= 540px
-        breakpoint: 540,
+        // screens greater than >= 640px
+        breakpoint: 640,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -60,6 +60,77 @@
         settings: {
           slidesToShow: 4,
           slidesToScroll: 4,
+
+        }
+      }, ]
+
+    });
+
+    new Glider(document.querySelector('.gliderBestDeals'), {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      draggable: true,
+      arrows: {
+        prev: '#glider-prevBestDeals',
+        next: '#glider-nextBestDeals'
+      },
+      responsive: [{
+        // screens greater than >= 640px
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+
+        }
+      }, {
+        // screens greater than >= 768px
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+
+        }
+      }, {
+        // screens greater than >= 1024px
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+
+        }
+      }, ]
+
+    });
+    new Glider(document.querySelector('.gliderCategories'), {
+      slidesToShow: 2,
+      slidesToScroll: 2,
+      draggable: true,
+      arrows: {
+        prev: '#glider-prevCategories',
+        next: '#glider-nextCategories'
+      },
+      responsive: [{
+        // screens greater than >= 640px
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+
+        }
+      }, {
+        // screens greater than >= 768px
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+
+        }
+      }, {
+        // screens greater than >= 1024px
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
 
         }
       }, ]
