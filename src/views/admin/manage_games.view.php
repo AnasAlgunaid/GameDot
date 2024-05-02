@@ -1,5 +1,3 @@
-<?php include('./src/templates/header.php'); ?>
-
 <main>
   <!-- Manage games -->
   <div class="xl:container mx-auto p-8">
@@ -8,7 +6,7 @@
       <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
     </h2>
     <div class="flex justify-between items-center mb-4">
-      <a href="./add_game.php">
+      <a href="./add_game">
         <button class="bg-primary px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300">Add Game</button>
       </a>
       <form action="" method="get" class="relative">
@@ -37,7 +35,7 @@
             <td class="border px-4 py-2">Available</td>
             <td class="border px-4 py-2 ">
               <div class="flex gap-4">
-                <a href="edit_game.php" class="bg-primary  px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300">Edit</a>
+                <a href="./edit_game" class="bg-primary  px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300">Edit</a>
                 <button class="bg-red-500
             px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300" onclick="window.confirm('Are you sure you want to delete?')">Delete</button>
               </div>
@@ -50,7 +48,7 @@
             <td class="border px-4 py-2">Available</td>
             <td class="border px-4 py-2">
               <div class="flex gap-4">
-                <a href="edit_game.php" class="bg-primary  px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300">Edit</a>
+                <a href="./edit_game" class="bg-primary  px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300">Edit</a>
                 <button class="bg-red-500
             px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300" onclick="window.confirm('Are you sure you want to delete?')">Delete</button>
               </div>
@@ -63,7 +61,7 @@
             <td class="border px-4 py-2">Available</td>
             <td class="border px-4 py-2">
               <div class="flex gap-4">
-                <a href="edit_game.php" class="bg-primary  px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300">Edit</a>
+                <a href="./edit_game" class="bg-primary  px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300">Edit</a>
                 <button class="bg-red-500
             px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300" onclick="window.confirm('Are you sure you want to delete?')">Delete</button>
               </div>
@@ -75,7 +73,4 @@
 
   </div>
   <!-- End of Manage games -->
-
-
 </main>
-<?php include('./src/templates/footer.php'); ?>

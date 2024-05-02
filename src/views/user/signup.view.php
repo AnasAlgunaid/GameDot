@@ -1,4 +1,3 @@
-<?php include('./src/templates/header.php'); ?>
 <main class="min-h-[80vh] p-8">
   <div class="max-w-96 mx-auto px-4 sm:px-8 py-12  border-2 border-secondaryBlack rounded-xl ">
     <h2 class="text-4xl font-bold mb-8 inline-block relative pb-1 ">
@@ -35,12 +34,8 @@
       <button type=" submit" class="bg-primary text-white px-4 py-2 rounded-md hover:opacity-85 duration-300">Sign Up</button>
     </form>
     <p class="mt-4">
-      Have an account? <a href="./signin.php" class="text-primary">Sign In</a>
+      Have an account? <a href="./signin" class="text-primary">Sign In</a>
     </p>
 
   </div>
-
-
-
 </main>
-<?php include('./src/templates/footer.php'); ?>

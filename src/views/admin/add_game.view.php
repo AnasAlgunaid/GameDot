@@ -1,9 +1,8 @@
-<?php include('./src/templates/header.php'); ?>
 <main>
-  <!-- Edit Game page -->
+  <!-- Add game page -->
   <div class="xl:container mx-auto p-8 ">
     <h2 class="text-3xl font-bold mb-4 inline-block relative pb-1">
-      Edit Game
+      Add Game
       <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
     </h2>
     <form action="" class="max-w-5xl mx-auto">
@@ -118,17 +117,10 @@
 
       <!-- Submit -->
       <div class="mt-8">
-        <button type="submit" class="bg-primary w-full text-white px-4 py-2 rounded-md hover:opacity-90 duration-300">Edit Game</button>
+        <button type="submit" class="bg-primary w-full text-white px-4 py-2 rounded-md hover:opacity-90 duration-300">Add Game</button>
       </div>
       <!-- End of Submit -->
 
-
     </form>
-
-
-
   </div>
-
-
 </main>
-<?php include('./src/templates/footer.php'); ?>

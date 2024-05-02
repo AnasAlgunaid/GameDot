@@ -1,6 +1,4 @@
-<?php include('./src/templates/header.php'); ?>
 <main>
-
   <div class="xl:container mx-auto px-8">
     <!-- Search field -->
     <form action="" method="get" class="relative mb-8">
@@ -42,6 +40,4 @@
       ?>
     </div>
     <!-- End of All Categories -->
-
 </main>
-<?php include('./src/templates/footer.php'); ?>

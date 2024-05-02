@@ -23,4 +23,4 @@ module.exports = {
   plugins: [],
 };
 
-// npx tailwindcss -i ./src/style/input.css -o ./src/style/output.css --watch
+// npx tailwindcss -i ./public/assets/style/input.css -o ./public/assets/style/output.css --watch

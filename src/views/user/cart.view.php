@@ -1,8 +1,7 @@
-<?php include('./src/templates/header.php'); ?>
-
 <main>
 
   <div class="xl:container mx-auto px-8 min-h-[80vh]">
+
     <div class="my-8">
       <h2 class="text-3xl font-bold mb-4 inline-block relative pb-1">
         Shopping Cart
@@ -10,13 +9,10 @@
       </h2>
     </div>
 
-
     <section>
       <div class="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto relative z-10">
         <div class="grid grid-cols-12">
           <div class="col-span-12  lg:pr-8 py-4 w-full max-xl:max-w-3xl max-xl:mx-auto">
-
-
 
             <!-- Start of Product -->
             <div class="flex flex-col min-[500px]:flex-row min-[500px]:items-center gap-5 py-6  border-b border-secondaryBlack ">
@@ -263,7 +259,7 @@
                   <p class="font-semibold text-xl leading-8 text-primary">$485.00</p>
                 </div>
 
-                <a href="./checkout.php" class="w-full block text-center bg-primary rounded-xl py-3 px-6 font-semibold text-lg text-white transition-all duration-500 hover:bg-primary">Checkout</a>
+                <a href="./checkout" class="w-full block text-center bg-primary rounded-xl py-3 px-6 font-semibold text-lg text-white transition-all duration-500 hover:bg-primary">Checkout</a>
               </form>
             </div>
           </div>
@@ -271,13 +267,5 @@
         </div>
       </div>
     </section>
-
-
-
-
-
-
-
   </div>
 </main>
-<?php include('./src/templates/footer.php'); ?>

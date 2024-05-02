@@ -1,5 +1,3 @@
-<?php include('./src/templates/header.php'); ?>
-
 <main>
   <div class="xl:container mx-auto px-8 min-h-[80vh]">
     <!-- Start of stats -->
@@ -10,7 +8,7 @@
           <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
         </h2>
         <!-- Logout -->
-        <a href="./index.php" class="bg-primary px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300">Logout</a>
+        <a href="./" class="bg-primary px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300">Logout</a>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         <div class="bg-secondaryBlack p-4 rounded-lg shadow-lg">
@@ -46,7 +44,7 @@
       </h2>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        <a href="./manage_games.php" class="bg-secondaryBlack p-8 rounded-lg shadow-lg flex flex-col justify-center items-center hover:bg-primary duration-300 cursor-pointer">
+        <a href="./manage_games" class="bg-secondaryBlack p-8 rounded-lg shadow-lg flex flex-col justify-center items-center hover:bg-primary duration-300 cursor-pointer">
           <i class="fi fi-sr-gamepad text-3xl"></i>
           <h3 class="text-2xl  ">Games</h3>
         </a>
@@ -127,8 +125,3 @@
     <!-- End of Recent Orders -->
 
 </main>
-
-
-
-
-<?php include('./src/templates/footer.php'); ?>

@@ -1,4 +1,3 @@
-<?php include('./src/templates/header.php'); ?>
 <main>
   <div class="xl:container mx-auto px-8">
     <!-- Search field -->
@@ -26,14 +25,11 @@
     </div>
     <!-- End of Filters -->
 
-
-
-
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <?php
       for ($i = 0; $i < 100; $i++) {
         echo ('
-              <a href="./game_page.php">
+              <a href="./game">
       <!-- Game Card -->
       <div class="bg-secondaryBlack rounded-xl overflow-hidden duration-300 hover:scale-[1.02] cursor-pointer">
         <img class="w-full " src="https://image.api.playstation.com/vulcan/ap/rnd/202312/0117/315718bce7eed62e3cf3fb02d61b81ff1782d6b6cf850fa4.png" alt="">
@@ -65,6 +61,4 @@
 
     </div>
   </div>
-
 </main>
-<?php include('./src/templates/footer.php'); ?>

@@ -1,4 +1,3 @@
-<?php include('./src/templates/header.php'); ?>
 <main>
   <div class="mx-auto xl:container bg-myBlack p-8 min-h-[80vh]">
     <div class="max-w-7xl mx-auto">
@@ -36,13 +35,10 @@
             <li class="flex flex-wrap gap-4 text-sm">Tax <span class="ml-auto font-bold">SR4.00</span></li>
             <li class="flex flex-wrap gap-4 text-base font-bold border-t pt-4">Total <span class="ml-auto">SR52.00</span></li>
             <br><br><br><br><br>
-
           </ul>
           <button type="button" class="px-6 py-3.5 w-full text-sm bg-primary text-white rounded-md hover:opacity-85 duration-300">Purchase</button>
         </div>
       </div>
     </div>
-        
   </div>
 </main>
-<?php include('./src/templates/footer.php'); ?>

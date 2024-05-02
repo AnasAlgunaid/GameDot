@@ -1,4 +1,3 @@
-<?php include('./src/templates/header.php'); ?>
 <main class="min-h-[80vh] p-8">
   <div class="max-w-96 mx-auto px-4 sm:px-8 py-12  border-2 border-secondaryBlack rounded-xl ">
     <h2 class="text-4xl font-bold mb-8 inline-block relative pb-1 ">
@@ -17,17 +16,13 @@
       <button type=" submit" class="bg-primary text-white px-4 py-2 rounded-md hover:opacity-85 duration-300">Sign In</button>
     </form>
     <p class="mt-4">
-      Don't have an account? <a href="./signup.php" class="text-primary">Sign Up</a>
+      Don't have an account? <a href="./signup" class="text-primary">Sign Up</a>
     </p>
     <p class="mt-4">
-      <a href="./forgot-password.php" class="text-primary">Forgot Password?</a>
+      <a href="./forgot-password" class="text-primary">Forgot Password?</a>
     </p>
     <p class="mt-4">
-      <a href="./signin_admin.php" class="text-primary">Admin Portal</a>
+      <a href="./admin_signin" class="text-primary">Admin Portal</a>
     </p>
   </div>
-
-
-
 </main>
-<?php include('./src/templates/footer.php'); ?>

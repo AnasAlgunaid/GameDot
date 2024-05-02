@@ -1,4 +1,3 @@
-<?php include('./src/templates/header.php'); ?>
 <main class="min-h-[80vh] p-8">
   <div class="max-w-96 mx-auto px-4 sm:px-8 py-12  border-2 border-secondaryBlack rounded-xl ">
     <h2 class="text-4xl font-bold mb-8 inline-block relative pb-1 ">
@@ -15,17 +14,13 @@
         <input type="password" name="password" id="password" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required placeholder="••••••••">
       </div>
       <!-- <button type=" submit" class="bg-primary text-white px-4 py-2 rounded-md hover:opacity-85 duration-300">Sign In</button> -->
-      <a href="./admin_homepage.php" class="bg-primary text-white px-4 py-2 rounded-md hover:opacity-85 duration-300">Sign In</a>
+      <a href="./admin_homepage" class="bg-primary text-white px-4 py-2 rounded-md hover:opacity-85 duration-300">Sign In</a>
     </form>
     <p class="mt-4">
-      Don't have an account? <a href="./signup.php" class="text-primary">Sign Up</a>
+      Don't have an account? <a href="./signup" class="text-primary">Sign Up</a>
     </p>
     <p class="mt-4">
-      <a href="./forgot-password.php" class="text-primary">Forgot Password?</a>
+      <a href="./forgot-password" class="text-primary">Forgot Password?</a>
     </p>
   </div>
-
-
-
 </main>
-<?php include('./src/templates/footer.php'); ?>

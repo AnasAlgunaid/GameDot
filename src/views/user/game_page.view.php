@@ -1,4 +1,3 @@
-<?php include('./src/templates/header.php'); ?>
 <main class="min-h-[80vh] ">
   <div class="xl:container mx-auto px-8 my-8">
 
@@ -68,7 +67,7 @@
         <!-- End of Quantity -->
 
         <!-- Start of Add to Cart -->
-        <a href="./cart.php" class="my-8">
+        <a href="./cart" class="my-8">
 
           <button class="bg-primary px-4 text-sm md:px-8 py-2 rounded-md hover:opacity-85 duration-300 w-full">
             <i class="fi fi-rr-shopping-cart mr-1 "></i>
@@ -138,7 +137,7 @@
           <?php
           for ($i = 0; $i < 100; $i++) {
             echo ('
-                      <a href="./game_page.php">
+                      <a href="./game">
           <!-- Game Card -->
           <div class="bg-secondaryBlack rounded-xl overflow-hidden duration-300 hover:scale-[1.02] cursor-pointer mx-2">
             <img class="w-full " src="https://image.api.playstation.com/vulcan/ap/rnd/202312/0117/315718bce7eed62e3cf3fb02d61b81ff1782d6b6cf850fa4.png" alt="">
@@ -215,12 +214,7 @@
               <i class="fi fi-sr-star text-yellow-400"></i>
               <i class="fi fi-sr-star text-slate-500"></i>
             </div>
-
-
           </div>
-
-
-
         </div>
         <!-- End of User Info -->
         <!-- Review Content -->
@@ -235,11 +229,7 @@
         ');
       }
       ?>
-
-
-
     </section>
   </div>
 
 </main>
-<?php include('./src/templates/footer.php'); ?>

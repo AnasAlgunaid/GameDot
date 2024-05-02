@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./src/style/output.css?<?= time() ?>">
+  <link rel="stylesheet" href="./public/assets/style/output.css?<?= time() ?>">
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' />
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
@@ -24,7 +24,7 @@
   <header class="py-4 px-8 mb-4 xl:container mx-auto ">
     <nav class=" flex justify-between items-center  ">
       <h1 class="font-bold text-2xl ">
-        <a href="">Gamedot</a>
+        <a href="./">Gamedot</a>
       </h1>
       <button class="sm:hidden">
         <i class="fi fi-rr-menu-burger text-2xl hover:opacity-85 hover:scale-[1.02] duration-300"></i>
@@ -40,12 +40,12 @@
 
       <ul class=" justify-between items-center gap-4 text-gray-400 duration-300 hidden sm:flex">
         <li>
-          <a href="./signup.php">
+          <a href="./signup">
             <button class="bg-primary px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300">Sign Up</button>
           </a>
         </li>
         <li>
-          <a href="./signin.php">
+          <a href="./signin">
             <button class="bg-primary px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300">Sign In</button>
           </a>
         </li>
