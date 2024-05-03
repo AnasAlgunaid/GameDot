@@ -1,3 +1,4 @@
+<?php require(getHeaderPath()) ?>
 <main class="min-h-[80vh] p-8">
   <div class="max-w-96 mx-auto px-4 sm:px-8 py-12  border-2 border-secondaryBlack rounded-xl ">
     <h2 class="text-4xl font-bold mb-8 inline-block relative pb-1 ">
@@ -39,3 +40,4 @@
 
   </div>
 </main>
+<?php require(getFooterPath()) ?>

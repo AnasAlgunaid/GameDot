@@ -1,3 +1,4 @@
+<?php require(getHeaderPath()) ?>
 <main>
   <div class="xl:container mx-auto px-8">
     <!-- Search field -->
@@ -62,3 +63,4 @@
     </div>
   </div>
 </main>
+<?php require(getFooterPath()) ?>

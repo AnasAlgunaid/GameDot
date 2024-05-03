@@ -1,3 +1,5 @@
+<?php require(getHeaderPath()) ?>
+
 <main class="min-h-[80vh]">
   <!-- Contact us -->
   <section class="xl:container mx-auto px-8 my-8">
@@ -38,3 +40,4 @@
   </section>
   <!-- End of Contact us -->
 </main>
+<?php require(getFooterPath()) ?>

@@ -1,3 +1,4 @@
+<?php require(getHeaderPath()) ?>
 <!-- Hero Section -->
 <main>
   <div class="xl:container mx-auto px-8">
@@ -181,3 +182,4 @@
     <div role="tablist" class="dots"></div>
   </div>
 </section>
+<?php require(getFooterPath()) ?>

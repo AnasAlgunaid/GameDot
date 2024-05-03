@@ -1,3 +1,4 @@
+<?php require(getHeaderPath()) ?>
 <main>
   <!-- Manage games -->
   <div class="xl:container mx-auto p-8">
@@ -74,3 +75,4 @@
   </div>
   <!-- End of Manage games -->
 </main>
+<?php require(getFooterPath()) ?>

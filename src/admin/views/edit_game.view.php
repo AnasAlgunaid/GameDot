@@ -1,3 +1,4 @@
+<?php require(getHeaderPath()) ?>
 <main>
   <!-- Edit Game page -->
   <div class="xl:container mx-auto p-8 ">
@@ -123,3 +124,4 @@
     </form>
   </div>
 </main>
+<?php require(getFooterPath()) ?>

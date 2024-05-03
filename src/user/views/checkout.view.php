@@ -1,3 +1,4 @@
+<?php require(getHeaderPath()) ?>
 <main>
   <div class="mx-auto xl:container bg-myBlack p-8 min-h-[80vh]">
     <div class="max-w-7xl mx-auto">
@@ -42,3 +43,4 @@
     </div>
   </div>
 </main>
+<?php require(getFooterPath()) ?>

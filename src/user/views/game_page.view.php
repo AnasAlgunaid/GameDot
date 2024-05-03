@@ -1,3 +1,4 @@
+<?php require(getHeaderPath()) ?>
 <main class="min-h-[80vh] ">
   <div class="xl:container mx-auto px-8 my-8">
 
@@ -233,3 +234,4 @@
   </div>
 
 </main>
+<?php require(getFooterPath()) ?>
