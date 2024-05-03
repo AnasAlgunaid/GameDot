@@ -23,7 +23,7 @@
       <a href="./forgot-password" class="text-primary">Forgot Password?</a>
     </p>
     <p class="mt-4">
-      <a href="./admin_signin" class="text-primary">Admin Portal</a>
+      <a href="./admin/signin" class="text-primary">Admin Portal</a>
     </p>
   </div>
 </main>

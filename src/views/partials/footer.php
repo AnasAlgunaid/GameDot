@@ -8,9 +8,17 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
-
+<script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
 <script src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js'></script>
 <script>
+  // Get a reference to the file input element
+  const inputElement = document.querySelectorAll('input[type="file"]');
+
+  // Create a FilePond instance
+  for (let i = 0; i < inputElement.length; i++) {
+    FilePond.create(inputElement[i]);
+  }
+
   const swiper = new Swiper('.swiper', {
     // Optional parameters
     direction: 'horizontal',

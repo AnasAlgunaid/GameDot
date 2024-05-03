@@ -9,8 +9,13 @@ $routes = [
   newRoute("/checkout") => "src/user/controllers/checkout.php",
   newRoute("/cart") => "src/user/controllers/cart.php",
   newRoute("/contactus") => "src/common/controllers/contactus.php",
-  newRoute("/admin/signin") => "src/admin/controllers/signin_admin.php",
-  newRoute("/admin/") => "src/admin/controllers/index.php",
+  newRoute("/admin/signin") => "src/admin/main/controllers/signin_admin.php",
+  newRoute("/admin/") => "src/admin/main/controllers/index.php",
+  newRoute("/admin/games/") => "src/admin/games/controllers/games.php",
+  newRoute("/admin/games/add") => "src/admin/games/controllers/add_game.php",
+  newRoute("/admin/games/edit") => "src/admin/games/controllers/edit_game.php",
+  newRoute("/admin/users/") => "src/admin/users/controllers/users.php",
+
 ];
 
 function newRoute($path)

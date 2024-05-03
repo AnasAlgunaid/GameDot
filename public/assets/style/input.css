@@ -5,3 +5,45 @@
 :root {
   --swiper-navigation-color: gray;
 }
+
+/* Customizes the whole scrollbar */
+::-webkit-scrollbar {
+  width: 6 px; /* Width of the scrollbar */
+}
+
+/* Customizes the track of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #101014; /* Color of the track */
+}
+
+/* Customizes the thumb of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #202025; /* Color of the thumb */
+}
+
+/* Changes the thumb color on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #20202599; /* Darker color on hover */
+}
+
+/* the text color of the drop label*/
+/* the background color of the filepond drop area */
+.filepond--panel-root {
+  background-color: #101014 !important;
+}
+
+/* the text color of the drop label*/
+.filepond--drop-label {
+  color: white !important;
+}
+
+/* bordered drop area */
+.filepond--panel-root {
+  background-color: transparent;
+  border: 2px dashed #202025;
+}
+
+/* the background color of the file and file panel (used when dropping an image) */
+.filepond--item-panel {
+  background-color: #8559f4 !important;
+}
