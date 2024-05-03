@@ -1,5 +1,5 @@
 <?php
-$title = 'Add game';
+$title = 'Checkout';
 require('src/views/partials/header.php');
-require('src/views/admin/add_game.view.php');
+require('src/user/views/checkout.view.php');
 require('src/views/partials/footer.php');

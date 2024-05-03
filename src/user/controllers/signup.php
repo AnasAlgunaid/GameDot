@@ -1,6 +1,5 @@
-
 <?php
-$title = 'Contact us';
+$title = 'Sign up';
 require('src/views/partials/header.php');
-require('src/views/common/contactus.view.php');
+require('src/user/views/signup.view.php');
 require('src/views/partials/footer.php');

@@ -1,5 +1,5 @@
 <?php
-$title = 'Categories';
+$title = 'Admin Home';
 require('src/views/partials/header.php');
-require('src/views/user/categories.view.php');
+require('src/admin/views/admin_homepage.view.php');
 require('src/views/partials/footer.php');
