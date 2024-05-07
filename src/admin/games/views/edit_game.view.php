@@ -1,101 +1,84 @@
 <?php require(getHeaderPath()) ?>
 <main>
-  <!-- Edit Game page -->
+  <!-- Add game page -->
   <div class="xl:container mx-auto p-8 ">
     <h2 class="text-3xl font-bold mb-4 inline-block relative pb-1">
-      Edit Game
+      Add Game
       <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
     </h2>
     <form action="" class="max-w-5xl mx-auto">
-      <!-- Start of Images Upload -->
-      <div class="flex items-center justify-center w-full">
-        <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2  border-dashed rounded-lg cursor-pointer hover:bg-bray-800 bg-myBlack  border-gray-600 hover:border-gray-500 hover:bg-secondaryBlack">
-          <div class="flex flex-col items-center justify-center pt-5 pb-6">
-            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-            </svg>
-            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-            <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-          </div>
-          <input id="dropzone-file" type="file" class="hidden" />
-        </label>
+      <!-- Start of Main Image Upload -->
+      <div>
+        <label for="mainImage" class="block text-sm text-gray-300 mb-2">Main Image</label>
+        <input type="file" id="mainImage" class="filepond" name="mainImage" data-max-file-size="3MB" data-max-files="1">
       </div>
-      <!-- End of Images upload -->
+      <!-- End of Main Image upload -->
+
+      <!-- Start of Screenshots Upload -->
+      <div>
+        <label for="screenshots" class="block text-sm text-gray-300 mb-2">Screenshots</label>
+        <input type="file" id="screenshots" class="filepond" name="screenshots" data-max-file-size="3MB" data-max-files="7" multiple data-allow-reorder="true">
+      </div>
+      <!-- End of Screenshots upload -->
 
       <!-- Game name -->
       <div class="mt-8">
         <label for="game-name" class="block text-sm text-gray-300">Game Name</label>
-        <input type="text" name="game-name" id="game-name" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required placeholder="Enter game name">
+        <input type="text" name="game-name" id="game-name" value="<?= $game['name'] ?>" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required placeholder="Enter game name">
       </div>
       <!-- End of game name -->
 
       <!-- Game Description -->
       <div class="mt-8">
         <label for="game-description" class="block text-sm text-gray-300">Game Description</label>
-        <textarea id="game-description" name="game-description" rows="3" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required placeholder="Enter game description"></textarea>
+        <textarea id="game-description" name="game-description" rows="3" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required placeholder="Enter game description"><?= $game['description'] ?></textarea>
       </div>
       <!-- End of game description -->
 
       <!-- Game Price -->
       <div class="mt-8">
         <label for="game-price" class="block text-sm text-gray-300">Game Price</label>
-        <input type="number" name="game-price" id="game-price" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required placeholder="Enter game price">
+        <input type="number" name="game-price" id="game-price" value="<?= $game['price'] ?>" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required placeholder="Enter game price">
       </div>
       <!-- End of game price -->
 
+
       <!-- Game Genre -->
       <div class="mt-8">
-        <label for="game-genre" class="block text-sm text-gray-300">Game Genre</label>
-        <select id="game-genre" name="game-genre" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required>
-          <option value="action">Action</option>
-          <option value="adventure">Adventure</option>
-          <option value="rpg">RPG</option>
-          <option value="strategy">Strategy</option>
-          <option value="simulation">Simulation</option>
-          <option value="sports">Sports</option>
-          <option value="puzzle">Puzzle</option>
-          <option value="horror">Horror</option>
-          <option value="shooter">Shooter</option>
-        </select>
+        <label for="game-genre" class="block text-sm text-gray-300 mb-2">Game Genre</label>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  gap-6 ">
+          <?php foreach ($genres as $genre) : ?>
+            <div class="flex items-center">
+              <input id="<?= $genre ?>" type="checkbox" value="<?= $genre ?>" <?php echo in_array($genre, $game['genres']) ? 'checked' : "" ?> class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <label for="<?= $genre ?> " class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"><?= $genre ?> </label>
+            </div>
+          <?php endforeach; ?>
+        </div>
       </div>
       <!-- End of game genre -->
 
       <!-- Game Publisher -->
       <div class="mt-8">
-        <label for="game-publisher" class="block text-sm text-gray-300">Game Publisher</label>
-        <select id="game-publisher" name="game-publisher" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required>
-          <option value="ubisoft">Ubisoft</option>
-          <option value="ea">EA</option>
-          <option value="activision">Activision</option>
-          <option value="bethesda">Bethesda</option>
-          <option value="rockstar">Rockstar</option>
-          <option value="sony">Sony</option>
-          <option value="microsoft">Microsoft</option>
-          <option value="nintendo">Nintendo</option>
-        </select>
+        <label for="gamePublisher" class="block text-sm text-gray-300">Game Publisher</label>
+        <input type="text" name="gamePublisher" id="gamePublisher" value="<?= $game['publisher'] ?>" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required placeholder="Enter game publisher">
       </div>
       <!-- End of game publisher -->
 
       <!-- Game Release Date -->
       <div class="mt-8">
-        <label for="game-release-date" class="block text-sm text-gray-300">Game Release Date</label>
-        <input type="date" name="game-release-date" id="game-release-date" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required>
+        <label for="gameReleaseDate" class="block text-sm text-gray-300">Game Release Date</label>
+        <input type="date" name="gameReleaseDate" id="gameReleaseDate" value="<?= $game['release_date'] ?>" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required>
       </div>
       <!-- End of game release date -->
 
       <!-- Game Platform -->
       <div class="mt-8">
-        <label for="game-platform" class="block text-sm text-gray-300">Game Platform</label>
-        <select id="game-platform" name="game-platform" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required>
-          <option value="ps4">PS4</option>
-          <option value="ps5">PS5</option>
-          <option value="xbox">Xbox</option>
-          <option value="pc">PC</option>
-          <option value="nintendo">Nintendo</option>
-        </select>
+        <label for="gamePlatform" class="block text-sm text-gray-300">Game Platform</label>
+        <input type="text" name="gamePlatform" id="gamePlatform" value="<?= $game['platform'] ?>" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required placeholder="Enter game platform">
       </div>
       <!-- End of game platform -->
 
+      <!-- TODO -->
       <!-- Game Age Rating -->
       <div class="mt-8">
         <label for="game-age-rating" class="block text-sm text-gray-300">Game Age Rating</label>
@@ -109,18 +92,12 @@
       </div>
       <!-- End of game age rating -->
 
-      <!-- Game Stock -->
-      <div class="mt-8">
-        <label for="game-stock" class="block text-sm text-gray-300">Game Stock</label>
-        <input type="number" name="game-stock" id="game-stock" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required placeholder="Enter game stock">
-      </div>
-      <!-- End of game stock -->
-
       <!-- Submit -->
       <div class="mt-8">
-        <button type="submit" class="bg-primary w-full text-white px-4 py-2 rounded-md hover:opacity-90 duration-300">Edit Game</button>
+        <button type="submit" class="bg-primary w-full text-white px-4 py-2 rounded-md hover:opacity-90 duration-300">Add Game</button>
       </div>
       <!-- End of Submit -->
+
     </form>
   </div>
 </main>

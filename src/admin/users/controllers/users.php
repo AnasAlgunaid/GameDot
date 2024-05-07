@@ -1,13 +1,7 @@
 <?php
 $title = 'Manage Users';
-$usersColumns = [
-  'id',
-  'name',
-  'email',
-  'dob',
 
-];
-
+$usersColumns = ['id', 'name', 'email', 'dob'];
 
 $users = [
   [
@@ -23,25 +17,25 @@ $users = [
     'dob' => '1995-01-01',
   ],
   [
-    'id' => 2,
+    'id' => 3,
     'name' => 'Mohammed Algunaid',
     'email' => 'mohammed@gmail.com',
     'dob' => '1995-01-01',
   ],
   [
-    'id' => 2,
+    'id' => 4,
     'name' => 'Mohammed Algunaid',
     'email' => 'mohammed@gmail.com',
     'dob' => '1995-01-01',
   ],
   [
-    'id' => 2,
+    'id' => 5,
     'name' => 'Mohammed Algunaid',
     'email' => 'mohammed@gmail.com',
     'dob' => '1995-01-01',
   ],
   [
-    'id' => 2,
+    'id' => 6,
     'name' => 'Mohammed Algunaid',
     'email' => 'mohammed@gmail.com',
     'dob' => '1995-01-01',

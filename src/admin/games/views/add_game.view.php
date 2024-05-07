@@ -47,13 +47,12 @@
       <div class="mt-8">
         <label for="game-genre" class="block text-sm text-gray-300 mb-2">Game Genre</label>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  gap-6 ">
-          <?php foreach ($genres as $genre) {
-            echo '<div class="flex items-center"> 
-            <input id="' . $genre . '" type="checkbox" value="' . $genre . '" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="' . $genre . '" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">' . $genre . '</label>
-            </div>';
-          } ?>
-
+          <?php foreach ($genres as $genre) : ?>
+            <div class="flex items-center">
+              <input id="<?= $genre ?>" type="checkbox" value="<?= $genre ?>" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <label for="<?= $genre ?> " class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"><?= $genre ?> </label>
+            </div>
+          <?php endforeach; ?>
         </div>
       </div>
       <!-- End of game genre -->
