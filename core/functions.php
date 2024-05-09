@@ -11,3 +11,12 @@ function getFooterPath()
 {
   return 'src/views/partials/footer.php';
 }
+
+
+// Abort function
+function abort($message)
+{
+  $ErrorMessage = $message;
+  require('src/views/errors/error.php');
+  die();
+}

@@ -1,22 +1,30 @@
 <?php require(getHeaderPath()) ?>
 
 <main>
-  <!-- Manage Users -->
+  <!-- Order Page -->
   <div class="xl:container mx-auto p-8">
-
     <div class="flex justify-between items-center gap-4 flex-wrap ">
       <div class="flex items-start gap-x-3">
         <h2 class="text-3xl font-bold mb-4 inline-block relative pb-1">
-          Users
+          Order Information
           <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
         </h2>
 
-        <span class="px-3 py-1 text-xs rounded-full bg-secondaryBlack text-primary mt-2"><?= count($users) ?> users</span>
+        <span class="px-3 py-1 text-xs rounded-full bg-secondaryBlack text-primary mt-2"><?= count($orderItems) ?> Items</span>
       </div>
-
     </div>
 
-    <!-- Start of users Table -->
+    <!-- Order Information -->
+    <?php foreach ($orderColumns as $dbcolumn => $column) : ?>
+      <div class="mt-8">
+        <label for="<?= $dbcolumn ?>" class="block text-sm text-gray-300"><?= $column ?></label>
+        <input type="text" name="<?= $dbcolumn ?>" id="<?= $dbcolumn ?>" value="<?= $order[$dbcolumn] ?>" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required disabled>
+      </div>
+    <?php endforeach; ?>
+
+
+
+    <!-- Start of orders Table -->
     <section>
       <div class="flex flex-col mt-6">
         <div class="overflow-x-auto ">
@@ -26,9 +34,9 @@
                 <thead class="bg-secondaryBlack">
                   <tr>
                     <?php
-                    foreach ($usersColumns as $column) :
+                    foreach ($orderItemsColumns as $column) :
                     ?>
-                      <th scope='col' class='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-400 '><?= $column ?></th>
+                      <th scope='col' class='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-400'><?= $column ?></th>
                     <?php endforeach; ?>
 
                   </tr>
@@ -36,12 +44,11 @@
                 <tbody class=" divide-y divide-gray-700 bg-myBlack">
 
                   <?php
-                  foreach ($users as $user) : ?>
+                  foreach ($orderItems as $order) : ?>
                     <tr>
-                      <?php foreach ($usersColumns as $dbcolumn => $column) : ?>
-                        <td class='px-4 py-4 text-sm font-medium text-gray-300 whitespace-nowrap hover:text-primary duration-300'><a href="./<?= $user['id'] ?>"><?= $user[$dbcolumn]  ?></a></td>
+                      <?php foreach ($orderItemsColumns as $dbcolumn => $column) : ?>
+                        <td class='px-4 py-4 text-sm font-medium text-gray-300 whitespace-nowrap'><?= $order[$dbcolumn]  ?></td>
                       <?php endforeach; ?>
-
                     </tr>
                   <?php endforeach; ?>
                   <!-- End of Record -->
@@ -52,9 +59,7 @@
         </div>
       </div>
     </section>
-    <!-- End of users Table-->
-
+    <!-- End of orders Table-->
   </div>
-  <!-- End of Manage users -->
 </main>
 <?php require(getFooterPath()) ?>

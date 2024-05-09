@@ -47,8 +47,8 @@
                   <?php
                   foreach ($games as $game) : ?>
                     <tr>
-                      <?php foreach ($gamesColumns as $column) : ?>
-                        <td class='px-4 py-4 text-sm font-medium text-gray-300 whitespace-nowrap'><?= $game[$column]  ?></td>
+                      <?php foreach ($gamesColumns as $dbcolumn => $column) : ?>
+                        <td class='px-4 py-4 text-sm font-medium text-gray-300 whitespace-nowrap hover:text-primary duration-300'><a href="./<?= $game['id'] ?>"><?= $game[$dbcolumn]  ?></a></td>
                       <?php endforeach; ?>
                       <td class="px-4 py-4 text-sm whitespace-nowrap">
                         <div class="flex items-center gap-x-6">
