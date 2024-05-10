@@ -33,7 +33,6 @@ $genres = [
   'tactical',
   'turn-based',
   'visual novel',
-  'other',
 ];
 
 require('src/admin/games/views/add_game.view.php');

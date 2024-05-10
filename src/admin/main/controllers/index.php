@@ -22,12 +22,12 @@ $totalSales = number_format($totalSales, 2);
 
 
 $ordersColumns = [
-  'id' => "ID",
-  'user_email' => "User Email",
-  'total_price' => "Total Price",
-  'order_date' => "Order Date",
-  'payment_method' => "Payment Method",
-  'items' => "Items"
+    'id' => "ID",
+    'user_email' => "User Email",
+    'total_price' => "Total Price",
+    'order_date' => "Order Date",
+    'payment_method' => "Payment Method",
+    'items' => "Items"
 ];
 
 // Get last 10 orders

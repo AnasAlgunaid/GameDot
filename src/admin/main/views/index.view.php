@@ -84,7 +84,7 @@
                     <?php
                     foreach ($ordersColumns as $column) :
                     ?>
-                      <th scope='col' class='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-400'><?= $column ?></th>
+                      <th scope='col' class='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-400'> <?= $column ?></th>
                     <?php endforeach; ?>
 
                   </tr>
@@ -95,7 +95,7 @@
                   foreach ($lastOrders as $order) : ?>
                     <tr>
                       <?php foreach ($ordersColumns as $dbcolumn => $column) : ?>
-                        <td class='px-4 py-4 text-sm font-medium text-gray-300 whitespace-nowrap'><?= $order[$dbcolumn]  ?></td>
+                        <td class='px-4 py-4 text-sm font-medium text-gray-300 whitespace-nowrap hover:text-primary duration-300'><a href="./orders/<?= $order['id'] ?>"><?= $order[$dbcolumn]  ?></a></td>
                       <?php endforeach; ?>
                     </tr>
                   <?php endforeach; ?>

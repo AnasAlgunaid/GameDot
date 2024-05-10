@@ -4,11 +4,11 @@ require("core/database.php");
 
 
 $routes = [
-  newRoute("/") => __DIR__ . "/src/user/controllers/homepage.php",
+  newRoute("/") => __DIR__ . "/src/user/controllers/index.php",
   newRoute("/signup") => __DIR__ . "/src/user/controllers/signup.php",
   newRoute("/signin") => __DIR__ . "/src/user/controllers/signin.php",
-  newRoute("/game") => __DIR__ . "/src/user/controllers/game_page.php",
   newRoute("/games") => "src/user/controllers/games.php",
+  // newRoute("/games/") => __DIR__ . "/src/user/controllers/game_page.php",
   newRoute("/categories") => __DIR__ . "/src/user/controllers/categories.php",
   newRoute("/checkout") => __DIR__ . "/src/user/controllers/checkout.php",
   newRoute("/cart") => __DIR__ . "/src/user/controllers/cart.php",
@@ -34,7 +34,11 @@ function newRoute($path)
 $uri = parse_url($_SERVER["REQUEST_URI"])['path'];
 
 // Check if the URI matches the pattern for admin/games/ID
-if (preg_match('/\/admin\/games\/(\d+)$/', $uri, $matches)) {
+if (preg_match('/\/games\/(\d+)$/', $uri, $matches)) {
+  $id = $matches[1];
+  $routes[$uri] = __DIR__ . "/src/user/controllers/game_page.php";
+  $_GET['game_id'] = $id;
+} else if (preg_match('/\/admin\/games\/(\d+)$/', $uri, $matches)) {
   $id = $matches[1];
   $routes[$uri] = __DIR__ . "/src/admin/games/controllers/game.php";
   $_GET['game_id'] = $id;
