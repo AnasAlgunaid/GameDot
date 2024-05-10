@@ -3,7 +3,22 @@
 <main>
   <div class="xl:container mx-auto px-8">
     <div class="w-full max-h-[36rem] rounded-2xl overflow-hidden ">
-      <img class="w-full h-full object-cover rounded-3xl" src="./public/assets/images/hero.png" alt="Hero Section">
+      <div class="glider-contain">
+        <div class="gliderHero ">
+          <div class="rounded-xl sm:rounded-2xl md:rounded-3xl mx-2 overflow-hidden">
+            <img class="w-full object-cover" src="./public/assets/images/hero.png" alt="Hero Section">
+          </div>
+          <div class="rounded-xl sm:rounded-2xl md:rounded-3xl mx-2 overflow-hidden">
+            <img class="w-full object-cover" src="./public/assets/images/hero.png" alt="Hero Section">
+          </div>
+          <div class="rounded-xl sm:rounded-2xl md:rounded-3xl mx-2 overflow-hidden">
+            <img class="w-full object-cover" src="./public/assets/images/hero.png" alt="Hero Section">
+          </div>
+        </div>
+        <button aria-label="Previous" id="glider-prevHero" class="glider-prev hidden sm:block"><i class="fi fi-rr-angle-small-left"></i></button>
+        <button aria-label="Next" id="glider-nextHero" class="glider-next hidden sm:block"><i class="fi fi-rr-angle-small-right"></i></button>
+        <div role="tablist" id="hero-dots" class="dots"></div>
+      </div>
     </div>
   </div>
 </main>
@@ -16,22 +31,22 @@
       Genres
       <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
     </h2>
-    <a href="./categories" class="text-primary hover:opacity-85 duration-300">View All</a>
+    <a href="./genres" class="text-primary hover:opacity-85 duration-300">View All</a>
   </div>
 
   <div class="glider-contain">
     <div class="gliderGenres">
 
       <?php foreach ($genres as $genre) : ?>
-        <div class="py-20 mx-2 text-2xl <?= $genresColors[strtolower($genre['name'])] ?> rounded-lg  flex justify-center items-center font-bold hover:scale-[1.02] cursor-pointer duration-300 ">
+        <div class="py-20 mx-2 text-2xl <?= $genresColors[strtolower($genre['name'])] ?> rounded-lg  flex justify-center items-center font-bold hover:scale-[1.02] cursor-pointer duration-300 h-full">
           <?= $genre['name'] ?>
         </div>
       <?php endforeach ?>
 
     </div>
 
-    <button aria-label="Previous" id="glider-prevGenres" class="glider-prev "><i class="fi fi-rr-angle-small-left"></i></button>
-    <button aria-label="Next" id="glider-nextGenres" class="glider-next"><i class="fi fi-rr-angle-small-right"></i></button>
+    <button aria-label="Previous" id="glider-prevGenres" class="glider-prev hidden sm:block"><i class="fi fi-rr-angle-small-left"></i></button>
+    <button aria-label="Next" id="glider-nextGenres" class="glider-next hidden sm:block"><i class="fi fi-rr-angle-small-right"></i></button>
     <div role="tablist" class="dots"></div>
   </div>
 </section>
@@ -52,9 +67,9 @@
       <?php foreach ($latestGames as $game) : ?>
         <a href="./games/<?= $game['id'] ?>">
           <!-- Game Card -->
-          <div class="bg-secondaryBlack rounded-xl overflow-hidden duration-300 hover:scale-[1.02] cursor-pointer mx-2">
+          <div class="bg-secondaryBlack rounded-xl overflow-hidden duration-300 hover:scale-[1.02] cursor-pointer mx-2 h-full flex flex-col justify-between">
             <img class="w-full " src="<?= $game['main_image_url'] ?>" alt="">
-            <div class="p-4 flex flex-col ">
+            <div class="p-4 flex flex-col justify-between h-full">
               <h3 class="text-lg font-bold"><?= $game['name'] ?></h3>
               <p class="font-base text-lg  text-primary"><?= $game['price'] ?> SR</p>
               <p class="text-base  text-gray-400"><?= $game['platform'] ?></p>
@@ -62,15 +77,14 @@
                 <i class="fi fi-rr-shopping-cart mr-1 "></i>
                 Add to Cart
               </button>
-
             </div>
           </div>
         </a>
       <?php endforeach; ?>
     </div>
 
-    <button aria-label="Previous" id="glider-prevLatest" class="glider-prev "><i class="fi fi-rr-angle-small-left"></i></button>
-    <button aria-label="Next" id="glider-nextLatest" class="glider-next"><i class="fi fi-rr-angle-small-right"></i></button>
+    <button aria-label="Previous" id="glider-prevLatest" class="glider-prev hidden sm:block"><i class="fi fi-rr-angle-small-left"></i></button>
+    <button aria-label="Next" id="glider-nextLatest" class="glider-next hidden sm:block"><i class="fi fi-rr-angle-small-right"></i></button>
     <div role="tablist" class="dots"></div>
   </div>
 
@@ -92,9 +106,9 @@
       <?php foreach ($bestDealsGames as $game) : ?>
         <a href="./games/<?= $game['id'] ?>">
           <!-- Game Card -->
-          <div class="bg-secondaryBlack rounded-xl overflow-hidden duration-300 hover:scale-[1.02] cursor-pointer mx-2">
+          <div class="bg-secondaryBlack rounded-xl overflow-hidden duration-300 hover:scale-[1.02] cursor-pointer mx-2 h-full flex flex-col justify-between">
             <img class="w-full " src="<?= $game['main_image_url'] ?>" alt="">
-            <div class="p-4 flex flex-col ">
+            <div class="p-4 flex flex-col justify-between h-full">
               <h3 class="text-lg font-bold"><?= $game['name'] ?></h3>
               <p class="font-base text-lg  text-primary"><?= $game['price'] ?> SR</p>
               <p class="text-base  text-gray-400"><?= $game['platform'] ?></p>
@@ -102,15 +116,14 @@
                 <i class="fi fi-rr-shopping-cart mr-1 "></i>
                 Add to Cart
               </button>
-
             </div>
           </div>
         </a>
       <?php endforeach; ?>
     </div>
 
-    <button aria-label="Previous" id="glider-prevBestDeals" class="glider-prev "><i class="fi fi-rr-angle-small-left"></i></button>
-    <button aria-label="Next" id="glider-nextBestDeals" class="glider-next"><i class="fi fi-rr-angle-small-right"></i></button>
+    <button aria-label="Previous" id="glider-prevBestDeals" class="glider-prev hidden sm:block"><i class="fi fi-rr-angle-small-left"></i></button>
+    <button aria-label="Next" id="glider-nextBestDeals" class="glider-next hidden sm:block"><i class="fi fi-rr-angle-small-right"></i></button>
     <div role="tablist" class="dots"></div>
   </div>
 
@@ -124,11 +137,25 @@
 <script>
   window.addEventListener('load', function() {
 
+    // Hero Glider
+    new Glider(document.querySelector('.gliderHero'), {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      draggable: true,
+      scrollLock: true,
+      dots: '#hero-dots',
+      arrows: {
+        prev: '#glider-prevHero',
+        next: '#glider-nextHero'
+      },
+    });
+
     // Genres Glider
     new Glider(document.querySelector('.gliderGenres'), {
       slidesToShow: 2,
       slidesToScroll: 2,
       draggable: true,
+
       arrows: {
         prev: '#glider-prevGenres',
         next: '#glider-nextGenres'
@@ -172,7 +199,7 @@
       },
       responsive: [{
         // screens greater than >= 640px
-        breakpoint: 640,
+        breakpoint: 500,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -210,7 +237,7 @@
       },
       responsive: [{
         // screens greater than >= 640px
-        breakpoint: 640,
+        breakpoint: 500,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,

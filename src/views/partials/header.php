@@ -25,7 +25,7 @@
   <header class="py-4 px-8 mb-4 xl:container mx-auto ">
     <nav class=" flex justify-between items-center  ">
       <h1 class="font-bold text-2xl ">
-        <a href="./">Gamedot</a>
+        <a href="<?= $baseUrl ?>">Gamedot</a>
       </h1>
       <button class="sm:hidden">
         <i class="fi fi-rr-menu-burger text-2xl hover:opacity-85 hover:scale-[1.02] duration-300"></i>

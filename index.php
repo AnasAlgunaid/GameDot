@@ -9,7 +9,7 @@ $routes = [
   newRoute("/signin") => __DIR__ . "/src/user/controllers/signin.php",
   newRoute("/games") => "src/user/controllers/games.php",
   // newRoute("/games/") => __DIR__ . "/src/user/controllers/game_page.php",
-  newRoute("/categories") => __DIR__ . "/src/user/controllers/categories.php",
+  newRoute("/genres") => __DIR__ . "/src/user/controllers/genres.php",
   newRoute("/checkout") => __DIR__ . "/src/user/controllers/checkout.php",
   newRoute("/cart") => __DIR__ . "/src/user/controllers/cart.php",
   newRoute("/contactus") => __DIR__ . "/src/common/controllers/contactus.php",
@@ -38,9 +38,14 @@ if (preg_match('/\/games\/(\d+)$/', $uri, $matches)) {
   $id = $matches[1];
   $routes[$uri] = __DIR__ . "/src/user/controllers/game_page.php";
   $_GET['game_id'] = $id;
-} else if (preg_match('/\/admin\/games\/(\d+)$/', $uri, $matches)) {
+}
+if (preg_match('/\/admin\/games\/(\d+)$/', $uri, $matches)) {
   $id = $matches[1];
   $routes[$uri] = __DIR__ . "/src/admin/games/controllers/game.php";
+  $_GET['game_id'] = $id;
+} else if (preg_match('/\/games\/(\d+)$/', $uri, $matches)) {
+  $id = $matches[1];
+  $routes[$uri] = __DIR__ . "/src/user/controllers/game_page.php";
   $_GET['game_id'] = $id;
 } else if (preg_match('/\/admin\/users\/(\d+)$/', $uri, $matches)) {
   $id = $matches[1];

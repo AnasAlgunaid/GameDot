@@ -2,24 +2,21 @@
 <!-- Game Page -->
 <main class="min-h-[80vh] ">
   <div class="xl:container mx-auto px-8 my-8">
-    <section class="grid  md:gap-12">
+    <section class="grid md:gap-12">
       <!-- Screenshots -->
-      <section class="swiper  w-full max-h-[32rem] rounded-xl md:rounded-3xl overflow-hidden">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-          <!-- Slides -->
-          <?php foreach ($media as $m) : ?>
-            <div class="swiper-slide">
-              <img class="w-full object-fit h-full bg-center" src="<?= $m["media_url"] ?>" alt="">
-            </div>
-          <?php endforeach ?>
+      <section class="w-full max-h-[44rem] rounded-xl md:rounded-3xl overflow-hidden">
+        <div class="glider-contain">
+          <div class="gliderScreenshots ">
+            <?php foreach ($media as $m) : ?>
+              <div class="rounded-xl sm:rounded-2xl md:rounded-3xl mx-2 overflow-hidden">
+                <img class="w-full object-cover" src="<?= $m["media_url"] ?>" alt="Screenshot">
+              </div>
+            <?php endforeach ?>
+          </div>
+          <button aria-label="Previous" id="glider-prevScreenshots" class="glider-prev hidden "><i class="fi fi-rr-angle-small-left"></i></button>
+          <button aria-label="Next" id="glider-nextScreenshots" class="glider-next hidden "><i class="fi fi-rr-angle-small-right"></i></button>
+          <div role="tablist" id="screenshots-dots" class="dots"></div>
         </div>
-        <!-- If we need pagination -->
-        <div class="swiper-pagination "></div>
-
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
 
       </section>
       <!-- End of Screenshots -->
@@ -54,6 +51,18 @@
       </p>
     </div>
     <!-- End of Description -->
+
+    <!-- Start of platforms information -->
+    <div class="my-8">
+      <h2 class="text-2xl font-bold mb-4 inline-block relative pb-1">
+        Platform
+        <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
+      </h2>
+      <p class="text-gray-300">
+        <?= $game["platform"] ?>
+      </p>
+    </div>
+    <!-- End of platforms information -->
 
     <!-- Start of Age Rating -->
     <div class="my-8">
@@ -92,17 +101,7 @@
     </div>
     <!-- End of Genre information -->
 
-    <!-- Start of platforms information -->
-    <div class="my-8">
-      <h2 class="text-2xl font-bold mb-4 inline-block relative pb-1">
-        Platform
-        <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
-      </h2>
-      <p class="text-gray-300">
-        <?= $game["platform"] ?>
-      </p>
-    </div>
-    <!-- End of platforms information -->
+
 
     <!-- Start of Release Date information -->
     <div class="my-8">
@@ -189,5 +188,25 @@
   </div>
 
 </main>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+<script>
+  window.addEventListener('load', function() {
+    // Screenshots Glider
+    new Glider(document.querySelector('.gliderScreenshots'), {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      draggable: true,
+      scrollLock: true,
+      dots: '#screenshots-dots',
+      arrows: {
+        prev: '#glider-prevScreenshots',
+        next: '#glider-nextScreenshots'
+      },
+    });
+
+  });
+</script>
 
 <?php require(getFooterPath()); ?>

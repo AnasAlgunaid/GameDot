@@ -27,38 +27,24 @@
     <!-- End of Filters -->
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <?php
-      for ($i = 0; $i < 100; $i++) {
-        echo ('
-              <a href="./game">
-      <!-- Game Card -->
-      <div class="bg-secondaryBlack rounded-xl overflow-hidden duration-300 hover:scale-[1.02] cursor-pointer">
-        <img class="w-full " src="https://image.api.playstation.com/vulcan/ap/rnd/202312/0117/315718bce7eed62e3cf3fb02d61b81ff1782d6b6cf850fa4.png" alt="">
-        <div class="p-4 flex flex-col ">
-          <h3 class="text-lg font-bold">Horizon Forbidden West</h3>
-          <p class="text-base  text-primary">179 SR</p>
-          <!-- Platforms -->
-          <div class="flex items-center text-gray-400 gap-x-4 mt-1 flex-wrap">
-            <img class="w-8 h-8" src="./src/icons/playstation5-icon.svg" alt="">
-            <img class="w-8 h-8" src="./src/icons/playstation4-icon.svg" alt="">
-            <img class="w-4 h-4" src="./src/icons/windows-icon.svg" alt="">
-            <img class="w-4 h-4" src="./src/icons/xbox-icon.svg" alt="">
-            <img class="w-8 h-8" src="./src/icons/macos-icon.svg" alt="">
+      <?php foreach ($games as $game) : ?>
+        <a href="./games/<?= $game['id'] ?>">
+          <!-- Game Card -->
+          <div class="bg-secondaryBlack rounded-xl overflow-hidden duration-300 hover:scale-[1.02] cursor-pointer mx-2 h-full flex flex-col justify-between">
+            <img class="w-full " src="<?= $game['main_image_url'] ?>" alt="">
+            <div class="p-4 flex flex-col justify-between h-full">
+              <h3 class="text-lg font-bold"><?= $game['name'] ?></h3>
+              <p class="font-base text-lg  text-primary"><?= $game['price'] ?> SR</p>
+              <p class="text-base  text-gray-400"><?= $game['platform'] ?></p>
+              <button class="bg-primary px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300 mt-4 w-full">
+                <i class="fi fi-rr-shopping-cart mr-1 "></i>
+                Add to Cart
+              </button>
+            </div>
           </div>
+        </a>
+      <?php endforeach; ?>
 
-          <button class="bg-primary px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300 mt-4 w-full">
-            <i class="fi fi-rr-shopping-cart mr-1 "></i>
-            Add to Cart
-          </button>
-
-        </div>
-      </div>
-    </a>
-    <!-- End of Game Card -->
-      ');
-      }
-
-      ?>
 
     </div>
   </div>
