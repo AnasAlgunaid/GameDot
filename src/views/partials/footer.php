@@ -7,7 +7,7 @@
   </p>
 </footer>
 
-
+<script src="<?= $baseUrl ?>/public/assets/js/collapse/index.js"> </script>
 <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
 <script>
   // Get a reference to the file input element

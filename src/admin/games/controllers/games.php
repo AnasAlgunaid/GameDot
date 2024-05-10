@@ -9,6 +9,10 @@ $gamesColumns = [
     'publisher' => 'Publisher',
     'stock' => 'Stock',
 ];
+
+
+
+// Database connection
 $database = new Database();
 $query = 'SELECT 
     games.*, 
@@ -19,6 +23,7 @@ LEFT JOIN
     stock ON games.id = stock.game_id
 GROUP BY 
     games.id';
+
 
 
 $games = $database->query($query)->qAll();

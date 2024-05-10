@@ -8,6 +8,8 @@ $routes = [
   newRoute("/signup") => __DIR__ . "/src/user/controllers/signup.php",
   newRoute("/signin") => __DIR__ . "/src/user/controllers/signin.php",
   newRoute("/games") => "src/user/controllers/games.php",
+  newRoute("/profile") => "src/user/controllers/profile.php",
+  newRoute("/logout") => "src/user/controllers/logout.php",
   // newRoute("/games/") => __DIR__ . "/src/user/controllers/game_page.php",
   newRoute("/genres") => __DIR__ . "/src/user/controllers/genres.php",
   newRoute("/checkout") => __DIR__ . "/src/user/controllers/checkout.php",
@@ -42,6 +44,10 @@ if (preg_match('/\/games\/(\d+)$/', $uri, $matches)) {
 if (preg_match('/\/admin\/games\/(\d+)$/', $uri, $matches)) {
   $id = $matches[1];
   $routes[$uri] = __DIR__ . "/src/admin/games/controllers/game.php";
+  $_GET['game_id'] = $id;
+} else if (preg_match('/\/admin\/games\/stock\/(\d+)$/', $uri, $matches)) {
+  $id = $matches[1];
+  $routes[$uri] = __DIR__ . "/src/admin/games/controllers/stock.php";
   $_GET['game_id'] = $id;
 } else if (preg_match('/\/games\/(\d+)$/', $uri, $matches)) {
   $id = $matches[1];

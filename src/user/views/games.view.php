@@ -1,17 +1,27 @@
 <?php require(getHeaderPath()) ?>
-<main>
+<main class="min-h-[80vh]">
   <div class="xl:container mx-auto px-8">
+
     <!-- Search field -->
-    <form action="" method="get" class="relative mb-8">
-      <input type="text" name="search" id="search" class="bg-secondaryBlack w-full  px-4 py-4 rounded-lg focus:outline-none focus:ring-primary focus:border-primary" placeholder="Search for games">
-      <button type="submit" class="absolute right-0 top-0 h-full px-4 py-2">
+    <form action="" method="get" class="relative ">
+      <input type="text" name="search" id="search" value="<?= $search ?>" class="bg-secondaryBlack w-full  px-4 py-4 rounded-lg focus:outline-none focus:ring-primary focus:border-primary " placeholder="Search for games">
+      <button type="submit" class="absolute right-0 top-0 h-full px-4 py-2 hover:text-primary duration-300">
         <i class="fi fi-rr-search"></i>
       </button>
     </form>
+    <!--  clear button -->
+    <?php if (isset($_GET["search"])) : ?>
+      <a href="./games" class="border border-primary
+    px-2 py-2 rounded-lg text-primary hover:text-white hover:bg-primary duration-300 flex justify-center items-center max-w-32 gap-2 my-4 ">
+        <i class="fi fi-rr-eraser mt-1"></i>
+        <p>Clear</p>
+      </a>
+      <!-- End of clear button -->
+    <?php endif ?>
     <!-- End of Search field -->
 
     <!-- Filters -->
-    <div class="flex justify-between items-center mb-8 flex-col sm:flex-row ">
+    <div class="flex justify-between items-center mt-8 mb-4 flex-col sm:flex-row ">
       <div>
         <h2 class="text-2xl font-bold mb-4 inline-block relative pb-1">
           All Games
@@ -26,6 +36,12 @@
     </div>
     <!-- End of Filters -->
 
+    <!-- Check if there is no gmaes -->
+    <?php if (empty($games)) : ?>
+      <div class="text-center">
+        <h2 class="text-2xl mb-4 text-gray-400">No games found</h2>
+      </div>
+    <?php endif; ?>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <?php foreach ($games as $game) : ?>
         <a href="./games/<?= $game['id'] ?>">

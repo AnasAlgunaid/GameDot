@@ -1,4 +1,16 @@
 <?php
+
+// Start the session
+session_start();
+
+// User must be signed in
+if (!isset($_SESSION['user'])) {
+    header('Location: ./signin');
+    exit;
+}
+
+$user_id = $_SESSION['user']['id'];
+
 $title = 'Cart';
 // Database connection
 $database = new Database();
@@ -20,11 +32,11 @@ WHERE
     cart_items.cart_id IN (SELECT cart_id FROM carts WHERE user_id = :user_id)
 ';
 // $cartItems = $database->query($query, ['user_id' => $_SESSION['user']['id']])->qAll();
-$cartItems = $database->query($query, ['user_id' => 1])->qAll();
+$cartItems = $database->query($query, ['user_id' => $user_id])->qAll();
 
 // Calculate the subtotal for each item * quantity
 foreach ($cartItems as &$cartItem) {
-  $cartItem['subtotal'] = $cartItem['price'] * $cartItem['quantity'];
+    $cartItem['subtotal'] = $cartItem['price'] * $cartItem['quantity'];
 }
 
 // Calculate the total
