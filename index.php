@@ -1,6 +1,9 @@
 <?php
+
+
 require("core/functions.php");
 require("core/database.php");
+
 
 
 $routes = [
@@ -9,7 +12,9 @@ $routes = [
   newRoute("/signin") => __DIR__ . "/src/user/controllers/signin.php",
   newRoute("/games") => "src/user/controllers/games.php",
   newRoute("/profile") => "src/user/controllers/profile.php",
-  newRoute("/logout") => "src/user/controllers/logout.php",
+  newRoute("/logout") => "src/common/controllers/logout.php",
+  newRoute("/admin/logout") => "src/common/controllers/logout.php",
+  newRoute("/admin/profile") => "src/admin/main/controllers/profile.php",
   // newRoute("/games/") => __DIR__ . "/src/user/controllers/game_page.php",
   newRoute("/genres") => __DIR__ . "/src/user/controllers/genres.php",
   newRoute("/checkout") => __DIR__ . "/src/user/controllers/checkout.php",
@@ -21,6 +26,7 @@ $routes = [
   newRoute("/admin/games/add") => __DIR__ . "/src/admin/games/controllers/add_game.php",
   newRoute("/admin/games/edit") => __DIR__ . "/src/admin/games/controllers/edit_game.php",
   newRoute("/admin/users/") => __DIR__ . "/src/admin/users/controllers/users.php",
+  newRoute("/admin/settings/") => __DIR__ . "/src/admin/settings/controllers/settings.php",
   // newRoute("/admin/users/user") => __DIR__ . "/src/admin/users/controllers/user.php",
   newRoute("/admin/orders/") => __DIR__ . "/src/admin/orders/controllers/orders.php",
   newRoute("/admin/orders/order") => __DIR__ . "/src/admin/orders/controllers/order.php",

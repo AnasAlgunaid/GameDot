@@ -93,8 +93,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'password' => password_hash($password, PASSWORD_DEFAULT),
       ])->q();
 
+      // Signup success
+      $_SESSION['signupSuccess'] = 'You have signed up successfully, please sign in.';
+
       // Redirect to the sign in page
-      header('Location: ./signin?signup=success');
+      header('Location: ./signin');
       exit;
     }
   }

@@ -10,27 +10,35 @@ $database = new Database();
 // Post request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (isset($_POST['signin_form'])) {
-    // Sign in
-    $query = 'SELECT * FROM users WHERE email = :email';
-    $user = $database->query($query, ['email' => $_POST['email']])->q();
+    // Email 
+    $email = $_POST['email'];
 
-    // Check if user exists and password is correct
-    if ($user && password_verify($_POST['password'], $user['password'])) {
-      // Unset the admin session if it exists
-      unset($_SESSION['admin']);
-
-      // Set session
-      $_SESSION['user'] = $user;
-
-      // Regenerate session ID to prevent session fixation
-      session_regenerate_id(true);
-
-      // Redirect to the home page
-      header('Location: ./');
-      exit;
+    // Email validation
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $errors[] = 'Invalid email.';
     } else {
-      // Add error message
-      $errors[] = 'Invalid email or password.';
+      // Sign in
+      $query = 'SELECT * FROM users WHERE email = :email';
+      $user = $database->query($query, ['email' => $_POST['email']])->q();
+
+      // Check if user exists and password is correct
+      if ($user && password_verify($_POST['password'], $user['password'])) {
+        // Unset the admin session if it exists
+        unset($_SESSION['admin']);
+
+        // Set session
+        $_SESSION['user'] = $user;
+
+        // Regenerate session ID to prevent session fixation
+        session_regenerate_id(true);
+
+        // Redirect to the home page
+        header('Location: ./');
+        exit;
+      } else {
+        // Add error message
+        $errors[] = 'Invalid email or password.';
+      }
     }
   }
 }

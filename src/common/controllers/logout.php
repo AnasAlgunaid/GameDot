@@ -6,6 +6,6 @@ session_start();
 unset($_SESSION['user']);
 unset($_SESSION['admin']);
 
-// Redirect to the home page
-header('Location: ./');
+// Redirect to the home page for user and admin
+header('Location: /gamedot');
 exit;

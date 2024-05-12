@@ -1,4 +1,12 @@
 <?php require(getHeaderPath()) ?>
+<!-- Success -->
+<?php if (isset($_SESSION['adminMessage'])) : ?>
+  <div class="bg-amber-500 text-white px-4 py-3 my-4 rounded relative" role="alert">
+    <strong class="font-bold">Message!</strong>
+    <span class="block sm:inline"><?= $_SESSION['adminMessage'] ?></span>
+  </div>
+  <?php unset($_SESSION['adminMessage']); ?>
+<?php endif; ?>
 <main>
   <div class="xl:container mx-auto px-8 min-h-[80vh]">
     <!-- Start of stats -->
@@ -8,8 +16,6 @@
           Admin Dashboard
           <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
         </h2>
-        <!-- Logout -->
-        <a href="../" class="bg-primary px-4 py-2 rounded-lg text-white hover:opacity-85 duration-300">Logout</a>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         <div class="bg-secondaryBlack p-4 rounded-lg shadow-lg">
@@ -57,9 +63,9 @@
           <i class="fi fi-rr-shopping-cart text-3xl"></i>
           <h3 class="text-2xl">Orders</h3>
         </a>
-        <a href="./reviews/" class="bg-secondaryBlack p-8 rounded-lg shadow-lg flex flex-col justify-center items-center hover:bg-primary duration-300 cursor-pointer">
-          <i class="fi fi-sr-star text-3xl"></i>
-          <h3 class="text-2xl  ">Reviews</h3>
+        <a href="./settings/" class="bg-secondaryBlack p-8 rounded-lg shadow-lg flex flex-col justify-center items-center hover:bg-primary duration-300 cursor-pointer">
+          <i class="fi fi-rr-employee-man text-3xl"></i>
+          <h3 class="text-2xl ">Settings</h3>
         </a>
 
       </div>

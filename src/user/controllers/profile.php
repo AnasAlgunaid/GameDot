@@ -72,12 +72,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'user_id' => $user_id
       ])->q();
 
-      // Redirect to the profile page
-      header('Location: ./profile');
+      // Store success message in session
+      $_SESSION['profileSuccess'] = 'Profile updated successfully.';
+
+      // Get the current URL
+      $url = $_SERVER['REQUEST_URI'];
+
+      // Redirect to the same page
+      header("Location: $url");
+      exit;
+    }
+  } elseif (isset($_POST['update_password_form'])) {
+    // Validate the old password
+    $query = 'SELECT * FROM users WHERE id = :user_id';
+    $user = $database->query($query, ['user_id' => $user_id])->q();
+
+    if (!password_verify($_POST['old_password'], $user['password'])) {
+      $passwordErrors[] = 'Old password is incorrect.';
+    } elseif (strlen($_POST['new_password']) < 8) {
+      // Validate the new password 
+      $passwordErrors[] = 'Password must be at least 8 characters.';
+    } elseif ($_POST['new_password'] !== $_POST['confirm_password']) {
+      $passwordErrors[] = 'Passwords do not match.';
+    }
+
+    // Check if there are no passwordErrors
+    if (!isset($passwordErrors)) {
+      // Update the password
+      $query = 'UPDATE users SET password = :password WHERE id = :user_id';
+      $database->query($query, [
+        'password' => password_hash($_POST['new_password'], PASSWORD_DEFAULT),
+        'user_id' => $user_id
+      ])->q();
+
+      // Store success message in session
+      $_SESSION['passwordSuccess'] = 'Password updated successfully.';
+
+      // Get the current URL
+      $url = $_SERVER['REQUEST_URI'];
+
+      // Redirect to the same page
+      header("Location: $url");
       exit;
     }
   }
 }
+
 
 // Get user data
 $query = 'SELECT * FROM users WHERE id = :user_id';

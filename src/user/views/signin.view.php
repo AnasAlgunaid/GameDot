@@ -1,10 +1,21 @@
 <?php require(getHeaderPath()) ?>
 <!-- Toast Signup success-->
-<?php if (isset($_GET['signup']) && $_GET['signup'] === 'success') : ?>
-  <div class="bg-green-500  text-white px-4 py-3 mb-2 rounded relative" role="alert">
+<!-- Success Profile update-->
+<?php if (isset($_SESSION['signupSuccess'])) : ?>
+  <div class="bg-emerald-500  text-white px-4 py-3 my-4 rounded relative" role="alert">
     <strong class="font-bold">Success!</strong>
-    <span class="block sm:inline">You have signed up successfully</span>
+    <span class="block sm:inline"><?= $_SESSION['signupSuccess'] ?></span>
   </div>
+  <?php unset($_SESSION['signupSuccess']); ?>
+<?php endif; ?>
+
+<!-- Success Password update-->
+<?php if (isset($_SESSION['passwordSuccess'])) : ?>
+  <div class="bg-emerald-500  text-white px-4 py-3 my-4 rounded relative" role="alert">
+    <strong class="font-bold">Success!</strong>
+    <span class="block sm:inline"><?= $_SESSION['passwordSuccess'] ?></span>
+  </div>
+  <?php unset($_SESSION['passwordSuccess']); ?>
 <?php endif; ?>
 
 <main class="min-h-[80vh] p-8">
@@ -25,7 +36,7 @@
       <?php endif; ?>
       <div class="mb-4">
         <label for="email" class="block text-sm  text-gray-300">Email</label>
-        <input type="email" name="email" id="email" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required placeholder="example@example.com">
+        <input type="email" name="email" id="email" value="<?= $email ?? '' ?>" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required placeholder="example@example.com">
       </div>
       <div class="mb-4">
         <label for="password" class="block text-sm  text-gray-300">Password</label>

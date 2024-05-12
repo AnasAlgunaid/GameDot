@@ -11,7 +11,7 @@
           <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
         </h2>
 
-        <span class="px-3 py-1 text-xs rounded-full bg-secondaryBlack text-primary mt-2"><?= count($users) ?> users</span>
+        <span class="px-3 py-1 text-xs rounded-full bg-secondaryBlack text-primary mt-2"><?= count($users) ?> Users</span>
       </div>
 
     </div>
