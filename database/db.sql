@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: May 10, 2024 at 02:20 PM
+-- Generation Time: May 12, 2024 at 11:10 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -28,12 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `admin_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `fname` varchar(255) DEFAULT NULL,
   `lname` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `fname`, `lname`, `email`, `password`) VALUES
+(1, 'Anass', 'Algunaid', 'anas@malek.com', '$2y$10$ZismgZowz1DfRYu6hds6xeIvoBzVpmwmk8V/CE9rey7Y1dVFFV71u');
 
 -- --------------------------------------------------------
 
@@ -299,7 +306,24 @@ CREATE TABLE `stock` (
 INSERT INTO `stock` (`id`, `game_code`, `game_id`) VALUES
 (2, 'AJEK3424kEk241', 2),
 (3, 'AJEK3424kEk573', 5),
-(4, 'AJEK3424kEk249', 1);
+(4, 'AJEK3424kEk249', 1),
+(6, 'adsdaad', 1),
+(9, 'fdsssssdfsdfsdfsdf', 1),
+(11, 'sdadsasadsdasasad', 3),
+(12, 'ereeewrrew', 3),
+(13, 'adsdsasader', 4),
+(16, 'adsrttteter', 5),
+(17, 'hdgdffddffd', 5),
+(20, 'sadsadsadsa', 5),
+(21, 'dfsfdsdsfdsf', 5),
+(22, 'uu676765775e', 5),
+(23, 'tryre77644', 5),
+(24, 'ututu', 5),
+(25, 'etryetryetrytryetyetryetery', 4),
+(26, 'dfsfdsdfsfd', 5),
+(27, 'geretrreyrety', 4),
+(28, 'dfsfdsftt', 5),
+(29, 'gfdsdsffds34243324324', 1);
 
 -- --------------------------------------------------------
 
@@ -325,7 +349,9 @@ INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `password`, `dob`) VALUES
 (2, 'Jane', 'Smith', 'jane@example.com', 'password456', '1995-05-15'),
 (3, 'Alice', 'Johnson', 'alice@example.com', 'password789', '1988-08-20'),
 (4, 'Bob', 'Williams', 'bob@example.com', 'password321', '1992-03-10'),
-(5, 'Emma', 'Brown', 'emma@example.com', 'password654', '1997-11-25');
+(5, 'Emma', 'Brown', 'emma@example.com', 'password654', '1997-11-25'),
+(8, 'Anasssssssssss', 'Algunaid', 'anas@algunaid.com', '$2y$10$Na815mjRt3VEeWK9Qsrpquj1CxaMXLBUs6Qeq6GT2mRwXSaoBH2oK', '2009-02-03'),
+(9, 'Anas', 'Algunaid', 'aljunaidanas@gmail.com', '$2y$10$loHRo0g.LAVsHqmf/2HY5emQxoK3e9Hb1yDVoRou5/sYb6Pvu4ara', '2009-02-03');
 
 --
 -- Indexes for dumped tables
@@ -335,7 +361,7 @@ INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `password`, `dob`) VALUES
 -- Indexes for table `admins`
 --
 ALTER TABLE `admins`
-  ADD PRIMARY KEY (`admin_id`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
@@ -424,7 +450,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `carts`
@@ -478,13 +504,13 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
