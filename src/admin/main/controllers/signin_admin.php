@@ -29,13 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // Regenerate session ID to prevent session fixation
       session_regenerate_id(true);
 
-      // Redirect the admin to the requested URI or the home page
-      if (isset($_SESSION['requestedURI'])) {
-        header('Location: ' . $_SESSION['requestedURI']);
-        unset($_SESSION['requestedURI']);
-      } else {
-        header('Location: ./');
-      }
+      // Redirect the admin to the home page
+      header('Location: ./');
 
       exit;
     } else {

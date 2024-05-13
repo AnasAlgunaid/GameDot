@@ -58,7 +58,7 @@ if (isset($_SESSION['admin'])) {
           <?php elseif (isset($_SESSION['user'])) : ?>
             <div class="flex justify-between items-center flex-wrap gap-6 sm:hidden">
               <!-- Cart -->
-              <a href="./cart" class="flex-1 pt-1">
+              <a href="<?= $baseUrl ?>/cart" class="flex-1 pt-1">
                 <button class="hover:text-primary text-gray-400 duration-300 text-2xl"><i class="fi fi-rr-shopping-cart "></i></button>
               </a>
             </div>
@@ -81,7 +81,7 @@ if (isset($_SESSION['admin'])) {
             <?php if (isset($_SESSION['user'])) : ?>
               <div class="flex justify-between items-center flex-wrap gap-6 ">
                 <!-- Cart -->
-                <a href="./cart" class="pt-1 hidden sm:block">
+                <a href="<?= $baseUrl ?>/cart" class="pt-1 hidden sm:block">
                   <button class="hover:text-primary text-gray-400 duration-300 text-2xl"><i class="fi fi-rr-shopping-cart "></i></button>
                 </a>
                 <!-- logout -->

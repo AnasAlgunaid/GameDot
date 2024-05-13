@@ -1,5 +1,27 @@
 <?php require(getHeaderPath()) ?>
-<!-- Errors Messages-->
+
+<!-- Add to cart Errors-->
+<?php if (isset($_SESSION['addToCartErrors'])) : ?>
+  <?php foreach ($_SESSION['addToCartErrors'] as $error) : ?>
+    <div class="bg-red-500  text-white px-4 py-3 mb-4 rounded relative" role="alert">
+      <strong class="font-bold">Error!</strong>
+      <span class="block sm:inline"><?= $error ?></span>
+    </div>
+  <?php endforeach; ?>
+  <?php unset($_SESSION['addToCartErrors']); ?>
+<?php endif; ?>
+
+<!-- Success Cart-->
+<!-- Success Review-->
+<?php if (isset($_SESSION['successCart'])) : ?>
+  <div class="bg-emerald-500  text-white px-4 py-3 mb-4 rounded relative" role="alert">
+    <strong class="font-bold">Success!</strong>
+    <span class="block sm:inline"><?= $_SESSION['successCart'] ?></span>
+  </div>
+  <?php unset($_SESSION['successCart']); ?>
+<?php endif; ?>
+
+<!-- Reviews Errors-->
 <?php if (isset($_SESSION['reviewErrors'])) : ?>
   <?php foreach ($_SESSION['reviewErrors'] as $error) : ?>
     <div class="bg-red-500  text-white px-4 py-3 mb-4 rounded relative" role="alert">
@@ -10,7 +32,9 @@
   <?php unset($_SESSION['reviewErrors']); ?>
 <?php endif; ?>
 
-<!-- Success Message-->
+
+
+<!-- Success Review-->
 <?php if (isset($_SESSION['successReview'])) : ?>
   <div class="bg-emerald-500  text-white px-4 py-3 mb-4 rounded relative" role="alert">
     <strong class="font-bold">Success!</strong>
@@ -18,6 +42,7 @@
   </div>
   <?php unset($_SESSION['successReview']); ?>
 <?php endif; ?>
+
 <main class="min-h-[80vh] ">
   <div class="xl:container mx-auto px-8 my-8">
     <section class="grid lg:grid-cols-2 md:gap-12 ">
@@ -45,7 +70,7 @@
             <?= $game["name"] ?>
           </h2>
         </div>
-        <div>
+        <div class="mb-8">
           <p class="text-primary font-bold text-xl text-center md:text-left">
             <?= $game["price"] ?> SR
           </p>
@@ -53,32 +78,45 @@
         <!-- End of Name and Price-->
 
 
-        <!-- Start of Quantity -->
-        <div class="my-8">
-          <label for="quantity" class="block text-sm  text-gray-300">Quantity</label>
-          <input type="number" name="quantity" id="quantity" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" required value="1" max="5" min="1">
-        </div>
-        <!-- End of Quantity -->
-
         <?php if ($game['stock'] > 0) : ?>
-          <!-- Start of Add to Cart -->
-          <a href="./cart" class="my-8">
+          <form action="" method="POST">
+            <!-- Start of Quantity -->
+            <div class="my-8 flex justify-center items-center md:block">
+              <div class="py-2 px-3 inline-block bg-myBlack border border-secondaryBlack  rounded-xl" data-hs-input-number='{"max": <?= min(5, $game['stock']) ?>, "min": 1}'>
+                <div class="flex items-center gap-x-1.5">
+                  <button type="button" class="size-10 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-md   bg-secondaryBlack text-white  hover:bg-primary duration-300 disabled:opacity-50 disabled:pointer-events-none" data-hs-input-number-decrement="">
+                    <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                    </svg>
+                  </button>
+                  <input class="p-0 w-6 bg-transparent border-0 text-white text-center focus:ring-0 text-lg sm:text-xl" type="text" value="1" data-hs-input-number-input="" name="quantity">
+                  <button type="button" class="size-10 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-md   bg-secondaryBlack text-white  hover:bg-primary duration-300 disabled:opacity-50 disabled:pointer-events-none" data-hs-input-number-increment="">
+                    <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
 
-            <button class="bg-primary px-4 text-sm md:px-8 py-2 rounded-md hover:opacity-85 duration-300 w-full">
+            </div>
+            <!-- End of Quantity -->
+
+            <!-- Start of Add to Cart -->
+            <button type="submit" name="add_to_cart_form" class="bg-primary px-4 text-sm md:px-8 py-2 rounded-md hover:opacity-85 duration-300 w-full">
               <i class="fi fi-rr-shopping-cart mr-1 "></i>
               Add to Cart
             </button>
-          </a>
+          </form>
           <!-- End of Add to Cart -->
         <?php else : ?>
-          <a href="" class="my-8">
+          <!-- Out of stock -->
+          <button class="bg-gray-500 px-4 text-sm md:px-8 py-2 rounded-md hover:opacity-85 duration-300 w-full" disabled>
+            <i class="fi fi-rr-shopping-cart mr-1 "></i>
+            Add to Cart
+          </button>
 
-            <button class="bg-gray-500 px-4 text-sm md:px-8 py-2 rounded-md hover:opacity-85 duration-300 w-full" disabled>
-              <i class="fi fi-rr-shopping-cart mr-1 "></i>
-              Add to Cart
-            </button>
-          </a>
-          <p class="text-red-500 text-center mt-2">Out of stock</p>
+          <p class="text-red-500 text-center mt-2 ">Out of stock</p>
         <?php endif; ?>
 
 
@@ -295,7 +333,7 @@
 
         <?php foreach ($reviews as $review) : ?>
           <!-- Start of Review Card -->
-          <div class="bg-secondaryBlack rounded-2xl my-4">
+          <div class="bg-secondaryBlack rounded-2xl my-4 overflow-hidden">
             <!-- User Info -->
             <div class="flex items-center  p-4 border-b border-gray-800">
               <div class="w-12 h-12 flex-shrink-0 rounded-full bg-primary flex justify-center items-center text-xl"><?= $review["full_name"][0] ?></div>
@@ -348,6 +386,7 @@
 </main>
 
 <!-- Scripts -->
+<script src="<?= $MAINURI ?>/public/assets/js/input-number/index.js"> </script>
 <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
 <script>
   window.addEventListener('load', function() {

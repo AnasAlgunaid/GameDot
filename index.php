@@ -32,8 +32,8 @@ $routes = [
 // Define an array of routes that require authentication for user access
 $userAuthenticatedRoutes = [
   newRoute("/profile"),
-  "/checkout",
-  "/cart",
+  newRoute("/checkout"),
+  newRoute("/cart"),
 ];
 
 // Define an array of routes that require authentication for admin access
@@ -61,7 +61,9 @@ $uri = parse_url($_SERVER["REQUEST_URI"])['path'];
 
 
 // Check if the requested route requires authentication
-if (in_array($uri, $userAuthenticatedRoutes) && !isset($_SESSION['admin'])) {
+
+if (in_array($uri, $userAuthenticatedRoutes) && !isset($_SESSION['user'])) {
+
   // Show Error Toaster Message and Redirect to Signin Page
   $_SESSION['authorizationError'] = "You must be logged in to access this page";
 
@@ -78,15 +80,10 @@ if (in_array($uri, $adminAuthenticatedRoutes) && !isset($_SESSION['admin'])) {
   // Show Error Toaster Message and Redirect to Signin Page
   $_SESSION['authorizationError'] = "You must be logged in as an admin to access this page";
 
-  // Add the requested URI to the session
-  $_SESSION['requestedURI'] = $uri;
-
   // Redirect the user to the sign-in page
   header("Location: /gamedot/admin/signin");
   exit;
 }
-
-
 
 // Check if the URI matches the pattern for admin/games/ID
 if (preg_match('/\/games\/(\d+)$/', $uri, $matches)) {
