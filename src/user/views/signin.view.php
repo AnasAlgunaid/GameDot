@@ -1,5 +1,4 @@
 <?php require(getHeaderPath()) ?>
-<!-- Toast Signup success-->
 
 <!-- Authorization Error Message-->
 <?php if (isset($_SESSION['authorizationError'])) : ?>

@@ -95,10 +95,10 @@ if (isset($_SESSION['admin'])) {
               </div>
             <?php else : ?>
               <div class="flex justify-between items-center flex-wrap gap-6 sm:min-w-64">
-                <a href="./signup" class="flex-1">
+                <a href="<?= $baseUrl ?>/signup" class="flex-1">
                   <button class="bg-primary px-4 py-2 w-full  rounded-lg text-white hover:opacity-85 duration-300">Sign Up</button>
                 </a>
-                <a href="./signin" class="flex-1">
+                <a href="<?= $baseUrl ?>/signin" class="flex-1">
                   <button class="border border-primary w-full px-4 py-2 rounded-lg text-primary hover:opacity-85 duration-300">Sign In</button>
                 </a>
               </div>

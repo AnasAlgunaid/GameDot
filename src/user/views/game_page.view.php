@@ -1,7 +1,25 @@
 <?php require(getHeaderPath()) ?>
+<!-- Errors Messages-->
+<?php if (isset($_SESSION['reviewErrors'])) : ?>
+  <?php foreach ($_SESSION['reviewErrors'] as $error) : ?>
+    <div class="bg-red-500  text-white px-4 py-3 mb-4 rounded relative" role="alert">
+      <strong class="font-bold">Error!</strong>
+      <span class="block sm:inline"><?= $error ?></span>
+    </div>
+  <?php endforeach; ?>
+  <?php unset($_SESSION['reviewErrors']); ?>
+<?php endif; ?>
+
+<!-- Success Message-->
+<?php if (isset($_SESSION['successReview'])) : ?>
+  <div class="bg-emerald-500  text-white px-4 py-3 mb-4 rounded relative" role="alert">
+    <strong class="font-bold">Success!</strong>
+    <span class="block sm:inline"><?= $_SESSION['successReview'] ?></span>
+  </div>
+  <?php unset($_SESSION['successReview']); ?>
+<?php endif; ?>
 <main class="min-h-[80vh] ">
   <div class="xl:container mx-auto px-8 my-8">
-
     <section class="grid lg:grid-cols-2 md:gap-12 ">
       <!-- Screenshots -->
       <section class="w-full max-h-[32rem] rounded-xl md:rounded-3xl overflow-hidden">
@@ -152,7 +170,7 @@
       <div class="glider-contain">
         <div class="gliderSimilar">
           <?php foreach ($similarGames as $similarGame) : ?>
-            <a href="./games/<?= $similarGame['id'] ?>">
+            <a href="./<?= $similarGame['id'] ?>">
               <!-- Game Card -->
               <div class="bg-secondaryBlack rounded-xl overflow-hidden duration-300 hover:scale-[1.02] cursor-pointer mx-2 h-full flex flex-col justify-between">
                 <img class="w-full " src="<?= $similarGame['main_image_url'] ?>" alt="">
@@ -178,6 +196,67 @@
     </section>
     <!-- End of Similar Section -->
 
+    <section class="my-16">
+      <h2 class="text-2xl font-bold mb-4 inline-block relative pb-1">
+        Write a Review
+        <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
+      </h2>
+      <?php if (isset($_SESSION['user'])) : ?>
+        <?php if (!$hasReviewed) : ?>
+          <!-- Start of Writing a Review -->
+          <form action="" method="POST" class="w-full">
+            <!-- Rating -->
+            <div class="flex flex-row-reverse justify-end items-center">
+              <input type="radio" id="rating-5" class="peer -ms-5 sm:-ms-7 size-7 sm:size-10 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0" name="rating" value="5">
+              <label for="rating-5" class="peer-checked:text-yellow-400 text-gray-300 pointer-events-none">
+                <svg class="flex-shrink-0 size-7 sm:size-10" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                </svg>
+              </label>
+              <input id="rating-4" type="radio" class="peer -ms-5 sm:-ms-7 size-7 sm:size-10 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0" name="rating" value="4">
+              <label for="rating-4" class="peer-checked:text-yellow-400 text-gray-300 pointer-events-none">
+                <svg class="flex-shrink-0 size-7 sm:size-10" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                </svg>
+              </label>
+              <input id="rating-3" type="radio" class="peer -ms-5 sm:-ms-7 size-7 sm:size-10 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0" name="rating" value="3">
+              <label for="rating-3" class="peer-checked:text-yellow-400 text-gray-300 pointer-events-none">
+                <svg class="flex-shrink-0 size-7 sm:size-10" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                </svg>
+              </label>
+              <input id="rating-2" type="radio" class="peer -ms-5 sm:-ms-7 size-7 sm:size-10 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0" name="rating" value="2">
+              <label for="rating-2" class="peer-checked:text-yellow-400 text-gray-300 pointer-events-none">
+                <svg class="flex-shrink-0 size-7 sm:size-10" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                </svg>
+              </label>
+              <input id="rating-1" type="radio" class="peer -ms-5 sm:-ms-7 size-7 sm:size-10 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0" name="rating" value="1">
+              <label for="rating-1" class="peer-checked:text-yellow-400 text-gray-300 pointer-events-none">
+                <svg class="flex-shrink-0 size-7 sm:size-10" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                </svg>
+              </label>
+            </div>
+            <!-- End Rating -->
+            <div class="my-4">
+              <label for="review" class="block text-sm  text-gray-300">Review</label>
+              <textarea name="review_text" id="review" class="bg-secondaryBlack mt-1 block w-full px-3 py-2 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" placeholder="Write your review"></textarea>
+            </div>
+            <button type="submit" name="review_form" class="bg-primary px-4 text-sm md:px-8 py-2 rounded-md hover:opacity-85 duration-300 w-full max-w-48">
+              Submit Review
+            </button>
+          </form>
+
+          <!-- End of writing a Revieiw -->
+        <?php else : ?>
+          <p class="text-gray-400">You have already reviewed this game</p>
+        <?php endif; ?>
+      <?php else : ?>
+        <p class="text-gray-400">You must be logged in to leave a review <a href="/gamedot/signin" class="text-primary hover:opacity-85 duration-300">Sign In</a></p>
+      <?php endif; ?>
+    </section>
+
     <!-- Start of Reviews -->
     <?php if (isset($reviews[0]["id"])) : ?>
       <!-- Start of Reviews -->
@@ -190,8 +269,23 @@
         <!-- Create Average Review Section -->
         <div class="flex items-center justify-center gap-1 flex-col mb-8 mt-4">
           <div class="flex items-center gap-2">
-            <i class="fi fi-sr-star text-yellow-400 text-5xl"></i>
-            <p class="text-gray-300 text-5xl font-bold"> <?= $avg_rating ?> / 5 </p>
+            <!-- Rating -->
+            <div class="flex items-center gap-1 sm:gap-2 mb-2">
+              <?php for ($i = 0; $i < $avg_rating; $i++) : ?>
+                <svg class="flex-shrink-0 size-7 sm:size-10 text-yellow-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                </svg>
+              <?php endfor; ?>
+
+              <?php for ($i = $avg_rating; $i < 5; $i++) : ?>
+                <svg class="flex-shrink-0 size-7 sm:size-10 text-gray-300" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                </svg>
+              <?php endfor; ?>
+
+
+            </div>
+            <!-- End Rating -->
           </div>
           <p class="text-gray-400">Based on <?= count($reviews) ?> Reviews</p>
 
