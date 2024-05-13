@@ -59,6 +59,47 @@ function newRoute($path)
 
 $uri = parse_url($_SERVER["REQUEST_URI"])['path'];
 
+// Check if the URI matches the pattern for admin/games/ID
+if (preg_match('/\/games\/(\d+)$/', $uri, $matches)) {
+  $id = $matches[1];
+  $routes[$uri] = __DIR__ . "/src/user/controllers/game_page.php";
+  $_GET['game_id'] = $id;
+}
+if (preg_match('/\/admin\/games\/(\d+)$/', $uri, $matches)) {
+  $id = $matches[1];
+  $routes[$uri] = __DIR__ . "/src/admin/games/controllers/game.php";
+  $_GET['game_id'] = $id;
+  // Add the route to adminAuthenticatedRoutes
+  array_push($adminAuthenticatedRoutes, newRoute("/admin/games/$id"));
+} else if (preg_match('/\/admin\/games\/stock\/(\d+)$/', $uri, $matches)) {
+  $id = $matches[1];
+  $routes[$uri] = __DIR__ . "/src/admin/games/controllers/stock.php";
+  $_GET['game_id'] = $id;
+  // Add the route to adminAuthenticatedRoutes
+  array_push($adminAuthenticatedRoutes, newRoute("/admin/games/stock/$id"));
+} else if (preg_match('/\/games\/(\d+)$/', $uri, $matches)) {
+  $id = $matches[1];
+  $routes[$uri] = __DIR__ . "/src/user/controllers/game_page.php";
+  $_GET['game_id'] = $id;
+} else if (preg_match('/\/admin\/users\/(\d+)$/', $uri, $matches)) {
+  $id = $matches[1];
+  $routes[$uri] = __DIR__ . "/src/admin/users/controllers/user.php";
+  $_GET['user_id'] = $id;
+  // Add the route to adminAuthenticatedRoutes
+  array_push($adminAuthenticatedRoutes, newRoute("/admin/users/$id"));
+} else if (preg_match('/\/admin\/orders\/(\d+)$/', $uri, $matches)) {
+  $id = $matches[1];
+  $routes[$uri] = __DIR__ . "/src/admin/orders/controllers/order.php";
+  $_GET['order_id'] = $id;
+  // Add the route to adminAuthenticatedRoutes
+  array_push($adminAuthenticatedRoutes, newRoute("/admin/orders/$id"));
+} else if (preg_match('/\/orders\/(\d+)$/', $uri, $matches)) {
+  $id = $matches[1];
+  $routes[$uri] = __DIR__ . "/src/user/controllers/order_page.php";
+  $_GET['order_id'] = $id;
+  // Add the route to userAuthenticatedRoutes
+  array_push($userAuthenticatedRoutes, newRoute("/orders/$id"));
+}
 
 // Check if the requested route requires authentication
 
@@ -83,34 +124,6 @@ if (in_array($uri, $adminAuthenticatedRoutes) && !isset($_SESSION['admin'])) {
   // Redirect the user to the sign-in page
   header("Location: /gamedot/admin/signin");
   exit;
-}
-
-// Check if the URI matches the pattern for admin/games/ID
-if (preg_match('/\/games\/(\d+)$/', $uri, $matches)) {
-  $id = $matches[1];
-  $routes[$uri] = __DIR__ . "/src/user/controllers/game_page.php";
-  $_GET['game_id'] = $id;
-}
-if (preg_match('/\/admin\/games\/(\d+)$/', $uri, $matches)) {
-  $id = $matches[1];
-  $routes[$uri] = __DIR__ . "/src/admin/games/controllers/game.php";
-  $_GET['game_id'] = $id;
-} else if (preg_match('/\/admin\/games\/stock\/(\d+)$/', $uri, $matches)) {
-  $id = $matches[1];
-  $routes[$uri] = __DIR__ . "/src/admin/games/controllers/stock.php";
-  $_GET['game_id'] = $id;
-} else if (preg_match('/\/games\/(\d+)$/', $uri, $matches)) {
-  $id = $matches[1];
-  $routes[$uri] = __DIR__ . "/src/user/controllers/game_page.php";
-  $_GET['game_id'] = $id;
-} else if (preg_match('/\/admin\/users\/(\d+)$/', $uri, $matches)) {
-  $id = $matches[1];
-  $routes[$uri] = __DIR__ . "/src/admin/users/controllers/user.php";
-  $_GET['user_id'] = $id;
-} else if (preg_match('/\/admin\/orders\/(\d+)$/', $uri, $matches)) {
-  $id = $matches[1];
-  $routes[$uri] = __DIR__ . "/src/admin/orders/controllers/order.php";
-  $_GET['order_id'] = $id;
 }
 
 if (array_key_exists($uri, $routes)) {
