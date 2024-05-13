@@ -1,6 +1,6 @@
 <?php
-// Start the session
-session_start();
+
+
 
 // Database connection
 $database = new Database();

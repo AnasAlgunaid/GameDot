@@ -1,7 +1,7 @@
 <?php require(getHeaderPath()) ?>
 <!-- Hero Section -->
 <main>
-  <div class="xl:container mx-auto px-8">
+  <div class="xl:container mx-auto px-8 mt-4">
     <div class="w-full max-h-[36rem] rounded-2xl overflow-hidden ">
       <div class="glider-contain">
         <div class="gliderHero ">

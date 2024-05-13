@@ -1,7 +1,7 @@
 <?php
 
-// Start the session
-session_start();
+
+
 
 // User must be signed in
 if (!isset($_SESSION['user'])) {

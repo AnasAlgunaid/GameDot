@@ -1,6 +1,12 @@
 <?php
 $title = 'Sign up';
 
+// Check if the user is already signed in
+if (isset($_SESSION['user'])) {
+  header('Location: ./');
+  exit;
+}
+
 // Database connection
 $database = new Database();
 

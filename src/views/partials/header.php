@@ -1,10 +1,4 @@
 <?php
-// Check if session is not active
-if (session_status() == PHP_SESSION_NONE) {
-  // Start the session
-  session_start();
-}
-
 $MAINURI = "$_SERVER[REQUEST_SCHEME]://$_SERVER[HTTP_HOST]/gamedot";
 
 if (isset($_SESSION['admin'])) {
@@ -36,7 +30,7 @@ if (isset($_SESSION['admin'])) {
 
 <body class="bg-myBlack text-white font-Roboto">
 
-  <header class=">flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-4 px-8 mb-4 mx-auto text-sm xl:container border-b-2 border-white border-opacity-5">
+  <header class=">flex flex-wrap sm:justify-start sm:flex-nowrap w-full py-4 px-8  mx-auto text-sm xl:container border-b-2 border-white border-opacity-5">
     <nav class=" w-full mx-auto sm:flex sm:items-center sm:justify-between" aria-label="Global">
       <div class="flex items-center justify-between flex-1">
         <a class="flex-none font-bold text-2xl" href="<?= $baseUrl ?>">GameDot</a>

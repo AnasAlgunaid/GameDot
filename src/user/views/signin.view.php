@@ -1,8 +1,18 @@
 <?php require(getHeaderPath()) ?>
 <!-- Toast Signup success-->
+
+<!-- Authorization Error Message-->
+<?php if (isset($_SESSION['authorizationError'])) : ?>
+  <div class="bg-red-500  text-white px-4 py-3 mb-4 rounded relative" role="alert">
+    <strong class="font-bold">Forbidden!</strong>
+    <span class="block sm:inline"><?= $_SESSION['authorizationError'] ?></span>
+  </div>
+  <?php unset($_SESSION['authorizationError']); ?>
+<?php endif; ?>
+
 <!-- Success Profile update-->
 <?php if (isset($_SESSION['signupSuccess'])) : ?>
-  <div class="bg-emerald-500  text-white px-4 py-3 my-4 rounded relative" role="alert">
+  <div class="bg-emerald-500  text-white px-4 py-3 mb-4 rounded relative" role="alert">
     <strong class="font-bold">Success!</strong>
     <span class="block sm:inline"><?= $_SESSION['signupSuccess'] ?></span>
   </div>
@@ -11,7 +21,7 @@
 
 <!-- Success Password update-->
 <?php if (isset($_SESSION['passwordSuccess'])) : ?>
-  <div class="bg-emerald-500  text-white px-4 py-3 my-4 rounded relative" role="alert">
+  <div class="bg-emerald-500  text-white px-4 py-3 mb-4 rounded relative" role="alert">
     <strong class="font-bold">Success!</strong>
     <span class="block sm:inline"><?= $_SESSION['passwordSuccess'] ?></span>
   </div>

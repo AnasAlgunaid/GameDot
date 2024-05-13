@@ -1,7 +1,7 @@
 <?php
 $title = 'Home';
-// Start the session
-session_start();
+
+
 // If the user is admin redirect to the admin page
 
 if (isset($_SESSION['admin'])) {
