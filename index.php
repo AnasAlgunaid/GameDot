@@ -77,6 +77,12 @@ if (preg_match('/\/admin\/games\/(\d+)$/', $uri, $matches)) {
   $_GET['game_id'] = $id;
   // Add the route to adminAuthenticatedRoutes
   array_push($adminAuthenticatedRoutes, newRoute("/admin/games/stock/$id"));
+} else if (preg_match('/\/admin\/games\/edit\/(\d+)$/', $uri, $matches)) {
+  $id = $matches[1];
+  $routes[$uri] = __DIR__ . "/src/admin/games/controllers/edit_game.php";
+  $_GET['game_id'] = $id;
+  // Add the route to adminAuthenticatedRoutes
+  array_push($adminAuthenticatedRoutes, newRoute("/admin/games/edit/$id"));
 } else if (preg_match('/\/games\/(\d+)$/', $uri, $matches)) {
   $id = $matches[1];
   $routes[$uri] = __DIR__ . "/src/user/controllers/game_page.php";

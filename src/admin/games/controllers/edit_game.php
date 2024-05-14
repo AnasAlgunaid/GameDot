@@ -1,66 +1,108 @@
 <?php
 $title = 'Edit Game';
-$genres = [
-  'action',
-  'adventure',
-  'racing',
-  'sports',
-  'strategy',
-  'simulation',
-  'puzzle',
-  'casual',
-  'arcade',
-  'card',
-  'board',
-  'trivia',
-  'educational',
-  'music',
-  'fighting',
-  'shooter',
-  'platformer',
-  'rpg',
-  'horror',
-  'sandbox',
-  'survival',
-  'battle royale',
-  'mmo',
-  'open world',
-  'stealth',
-  'party',
-  'roguelike',
-  'rhythm',
-  'tactical',
-  'turn-based',
-  'visual novel',
-  'other',
-];
-$game =   [
-  'game_id' => 1,
-  'name' => 'The Witcher 3: Wild Hunt',
-  'description' => 'The Witcher 3: Wild Hunt is an action role-playing game developed and published by CD Projekt Red. The Witcher 3: Wild Hunt is an action role-playing game developed and published by CD Projekt Red. The Witcher 3: Wild Hunt is an action role-playing game developed and published by CD Projekt Red. The Witcher 3: Wild Hunt is an action role-playing game developed and published by CD Projekt Red. The Witcher 3: Wild Hunt is an action role-playing game developed and published by CD Projekt Red. The Witcher 3: Wild Hunt is an action role-playing game developed and published by CD Projekt Red.',
-  'platform' => 'PC, PlayStation 4, Xbox One, Nintendo Switch',
-  'price' => 29.99,
-  'main_image_url' => 'https://image.api.playstation.com/vulcan/ap/rnd/202211/0711/kh4MUIuMmHlktOHar3lVl6rY.png',
-  'age_rating' => '+16',
-  'publisher' => 'CD Projekt Red',
-  'release_date' => '2015-05-19',
-  'genres' => ['action', 'adventure', 'party']
-];
+// Database connection
+$database = new Database();
 
-$media = [
-  [
-    'media_id' => 1,
-    'media_url' => 'https://cdn.cloudflare.steamstatic.com/steam/apps/292030/ss_0901e64e9d4b8ebaea8348c194e7a3644d2d832d.1920x1080.jpg?t=1710411171',
-  ],
-  [
-    'media_id' => 2,
-    'media_url' => 'https://cdn.vox-cdn.com/thumbor/6HUYnfetJodozWpQgLOBwtq_ioU=/297x0:1917x1080/1280x854/cdn.vox-cdn.com/uploads/chorus_image/image/46312824/The_Witcher_3_Wild_Hunt_The_sirens_may_look_beautiful_in_the_water-but_once_they_re_out_of_it-they_change_into_deadly-flying_creatures..0.0.png',
-  ],
-  [
-    'media_id' => 3,
-    'media_url' => 'https://static1.srcdn.com/wordpress/wp-content/uploads/2024/04/witcher-3-geralt-of-rivia-keyart.jpg',
-  ],
-  // Add more media entries here if needed
-];
+// require the form validation file
+require('games_functions.php');
+
+// Get the game id
+$game_id = $_GET['game_id'];
+
+// Get the genres
+$query = 'SELECT * FROM genres';
+$genres = $database->query($query)->qAll();
+
+// Post request
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+  try {
+    // Start transaction
+    $database->beginTransaction();
+
+    // Get the post data
+    $name = $_POST['gameName'];
+    $price = $_POST['gamePrice'];
+    $description = $_POST['gameDescription'];
+    $genresInput = $_POST['gameGenres'] ?? [];
+    $publisher = $_POST['gamePublisher'];
+    $releaseDate = $_POST['gameReleaseDate'];
+    $platform = $_POST['gamePlatform'];
+    $ageRating = $_POST['gameAgeRating'];
+
+    // Perform validation
+    $validations = [
+      validateName($name),
+      validatePrice($price),
+      validateDescription($description),
+      validateGenres($genresInput, $genres),
+      validatePublisher($publisher),
+      validateReleaseDate($releaseDate),
+      validatePlatform($platform),
+      validateAgeRating($ageRating)
+    ];
+
+    // Check if any validation failed
+    if (in_array(false, $validations)) {
+      throw new Exception("Validation failed");
+    }
+
+
+    // Update the game
+    $query = 'UPDATE games SET name = :name, price = :price, description = :description, publisher = :publisher, release_date = :release_date, platform = :platform, age_rating = :age_rating WHERE id = :id';
+
+    $database->query($query, [
+      'name' => $name,
+      'price' => $price,
+      'description' => $description,
+      'publisher' => $publisher,
+      'release_date' => $releaseDate,
+      'platform' => $platform,
+      'age_rating' => $ageRating,
+      'id' => $game_id
+    ])->q();
+
+    // Delete and Update the genres
+    $query = 'DELETE FROM game_genres WHERE game_id = :game_id';
+    $database->query($query, ['game_id' => $game_id])->q();
+
+    foreach ($genresInput as $genreInput) {
+      $query = 'INSERT INTO game_genres (game_id, genre_id) VALUES (:game_id, :genre_id)';
+      $database->query($query, ['game_id' => $game_id, 'genre_id' => $genreInput])->q();
+    }
+
+    // Commit transaction
+    $database->commit();
+
+    // Success message
+    $_SESSION['editGameSuccess'] = 'Game updated successfully';
+
+    // Redirect to the games page
+    header('Location: /gamedot/admin/games/edit/' . $game_id);
+    exit;
+  } catch (Exception $e) {
+    // Rollback transaction
+    $database->rollBack();
+
+    // Set error message
+    $_SESSION['editGameErrors'][] = $e->getMessage();
+
+    // Redirect to the add game page
+    header('Location: /gamedot/admin/games/edit/' . $game_id);
+    exit;
+  }
+}
+
+
+// Get the game genres
+$query = 'SELECT genre_id FROM game_genres WHERE game_id = :game_id';
+$gameGenres = $database->query($query, ['game_id' => $game_id])->qAll();
+
+
+// Get the game data
+$query = 'SELECT * FROM games WHERE id = :id';
+
+$game = $database->query($query, ['id' => $game_id])->qOrAbort();
+
 
 require('src/admin/games/views/edit_game.view.php');

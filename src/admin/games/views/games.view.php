@@ -73,9 +73,9 @@
                             <i class="fi fi-rr-boxes"></i>
                           </a>
 
-                          <button class="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none text-base">
+                          <a href="./edit/<?= $game["id"] ?>" class="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none text-base">
                             <i class="fi fi-rr-edit"></i>
-                          </button>
+                          </a>
 
                           <form action="" method="POST">
                             <input type="hidden" name="delete_game" value="<?= $game['id'] ?>">
