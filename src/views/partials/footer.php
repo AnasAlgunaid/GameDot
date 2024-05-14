@@ -1,5 +1,5 @@
 <footer class="text-center text-gray-300 py-4 ">
-  <a href="./contactus" class="my-2 text-primary font-bold">
+  <a href="/gamedot/contactus" class="my-2 text-primary font-bold">
     Contact us
   </a>
   <p>
