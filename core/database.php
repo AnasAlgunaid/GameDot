@@ -72,4 +72,28 @@ class Database
   {
     return $this->statement->rowCount();
   }
+
+  // Get the last inserted ID
+  public function getLastInsertId()
+  {
+    return $this->connection->lastInsertId();
+  }
+
+  // Begin transaction
+  public function beginTransaction()
+  {
+    return $this->connection->beginTransaction();
+  }
+
+  // Commit transaction
+  public function commit()
+  {
+    return $this->connection->commit();
+  }
+
+  // Rollback transaction
+  public function rollBack()
+  {
+    return $this->connection->rollBack();
+  }
 }

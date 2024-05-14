@@ -72,7 +72,7 @@ if (isset($_SESSION['admin'])) {
           <div class="flex flex-col gap-6 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
             <!-- Search Field -->
             <form action="./games" method="GET" class="relative block">
-              <input type="text" name="search" id="search" class="bg-secondaryBlack w-full lg:min-w-80 px-4 py-2 rounded-lg focus:outline-none focus:ring-primary focus:border-primary" placeholder="Search for games">
+              <input type="text" name="search" id="search" class="bg-secondaryBlack w-full lg:min-w-80 px-4 py-2 rounded-lg border border-myBlack focus:outline-none focus:ring-primary focus:border-primary" placeholder="Search for games">
               <button type="submit" class="absolute right-0 top-0 h-full px-4 py-2 hover:text-primary duration-300">
                 <i class="fi fi-rr-search"></i>
               </button>

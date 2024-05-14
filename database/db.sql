@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: May 14, 2024 at 06:07 AM
+-- Generation Time: May 14, 2024 at 05:18 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -87,8 +87,7 @@ INSERT INTO `cart_items` (`id`, `cart_id`, `game_id`, `quantity`) VALUES
 (2, 2, 2, 1),
 (3, 3, 3, 1),
 (4, 4, 4, 1),
-(5, 5, 5, 1),
-(19, 6, 3, 2);
+(5, 5, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -223,7 +222,7 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `total_price` float DEFAULT NULL,
-  `order_date` date DEFAULT NULL,
+  `order_date` date DEFAULT current_timestamp(),
   `payment_method` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -236,7 +235,32 @@ INSERT INTO `orders` (`id`, `user_id`, `total_price`, `order_date`, `payment_met
 (2, 2, 59.99, '2023-07-11', 'PayPal'),
 (3, 3, 59.99, '2023-07-12', 'Credit Card'),
 (4, 4, 39.99, '2023-07-13', 'PayPal'),
-(5, 5, 49.99, '2023-07-14', 'Credit Card');
+(5, 5, 49.99, '2023-07-14', 'Credit Card'),
+(6, 8, 153.98, '2024-05-14', 'Credit Card'),
+(7, 8, 153.98, '2024-05-14', 'Credit Card'),
+(8, 8, 153.98, '2024-05-14', 'Credit Card'),
+(9, 8, 153.98, '2024-05-14', 'Credit Card'),
+(10, 8, 153.98, '2024-05-14', 'Credit Card'),
+(11, 8, 153.98, '2024-05-14', 'Credit Card'),
+(12, 8, 153.98, '2024-05-14', 'Credit Card'),
+(13, 8, 153.98, '2024-05-14', 'Credit Card'),
+(14, 8, 97, '2024-05-14', 'Credit Card'),
+(15, 8, 38.97, '2024-05-14', 'Credit Card'),
+(16, 8, 30, '2024-05-14', 'Credit Card'),
+(17, 8, 12.99, '2024-05-14', 'Credit Card'),
+(18, 8, 12.99, '2024-05-14', 'Credit Card'),
+(19, 8, 12.99, '2024-05-14', 'Credit Card'),
+(20, 8, 12.99, '2024-05-14', 'Credit Card'),
+(21, 8, 12.99, '2024-05-14', 'Credit Card'),
+(22, 8, 12.99, '2024-05-14', 'Credit Card'),
+(23, 8, 12.99, '2024-05-14', 'Credit Card'),
+(24, 8, 12.99, '2024-05-14', 'Credit Card'),
+(25, 8, 30, '2024-05-14', 'Credit Card'),
+(26, 8, 30, '2024-05-14', 'Credit Card'),
+(28, 8, 90, '2024-05-14', 'Credit Card'),
+(29, 8, 12.99, '2024-05-14', 'Credit Card'),
+(30, 8, 60, '2024-05-14', 'Credit Card'),
+(31, 8, 60, '2024-05-14', 'Credit Card');
 
 -- --------------------------------------------------------
 
@@ -262,7 +286,28 @@ INSERT INTO `order_items` (`id`, `game_id`, `order_id`, `game_code`, `subtotal`)
 (3, 3, 3, '1', 59.99),
 (4, 4, 4, '1', 39.99),
 (5, 5, 5, '1', 49.99),
-(6, 3, 1, '2', 35.25);
+(6, 3, 1, '2', 35.25),
+(7, 3, 13, 'sdadsasadsdasasad', 76.99),
+(8, 3, 13, 'ereeewrrew', 76.99),
+(9, 1, 14, 'AJEK3424kEk249', 24.25),
+(10, 1, 14, 'adsdaad', 24.25),
+(11, 1, 14, 'fdsssssdfsdfsdfsdf', 24.25),
+(12, 1, 14, 'gfdsdsffds34243324324', 24.25),
+(13, 4, 15, 'adsdsasader', 12.99),
+(14, 4, 15, 'etryetryetrytryetyetryetery', 12.99),
+(15, 4, 15, 'geretrreyrety', 12.99),
+(16, 5, 16, 'AJEK3424kEk573', 30),
+(17, 4, 17, 'asdfdasfdse', 12.99),
+(18, 4, 20, 'ukyyuiuty', 12.99),
+(19, 4, 23, 'asddssadsad', 12.99),
+(20, 4, 24, 'trrttrewwt', 12.99),
+(21, 5, 25, '455eytyreyr', 30),
+(22, 5, 26, 'thrutrey', 30),
+(24, 5, 28, 'triuetretrey', 30),
+(25, 2, 28, 'terwwery54', 60),
+(26, 4, 29, 'dadsffdsdsfa', 12.99),
+(27, 2, 30, 'asdewr', 60),
+(28, 2, 31, 'werewrewr', 60);
 
 -- --------------------------------------------------------
 
@@ -307,25 +352,7 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`id`, `game_code`, `game_id`) VALUES
-(3, 'AJEK3424kEk573', 5),
-(4, 'AJEK3424kEk249', 1),
-(6, 'adsdaad', 1),
-(9, 'fdsssssdfsdfsdfsdf', 1),
-(11, 'sdadsasadsdasasad', 3),
-(12, 'ereeewrrew', 3),
-(13, 'adsdsasader', 4),
-(16, 'adsrttteter', 5),
-(17, 'hdgdffddffd', 5),
-(20, 'sadsadsadsa', 5),
-(21, 'dfsfdsdsfdsf', 5),
-(22, 'uu676765775e', 5),
-(23, 'tryre77644', 5),
-(24, 'ututu', 5),
-(25, 'etryetryetrytryetyetryetery', 4),
-(26, 'dfsfdsdfsfd', 5),
-(27, 'geretrreyrety', 4),
-(28, 'dfsfdsftt', 5),
-(29, 'gfdsdsffds34243324324', 1);
+(45, 'sfadfsds', 4);
 
 -- --------------------------------------------------------
 
@@ -464,7 +491,7 @@ ALTER TABLE `carts`
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `games`
@@ -488,13 +515,13 @@ ALTER TABLE `media`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -506,7 +533,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -92,7 +92,7 @@
             </div>
             <!-- Start of Order Summary -->
             <div class=" col-span-12  bg-secondaryBlack rounded-3xl w-full p-8">
-              <h2 class=" font-bold text-3xl leading-10 text-white pb-8 border-b border-secondaryBlack">
+              <h2 class=" font-bold text-3xl text-white pb-2 border-b border-secondaryBlack">
                 Order Summary</h2>
               <div>
                 <form>
@@ -103,7 +103,7 @@
                     <p class="font-semibold text-xl leading-8 text-primary"><?= $totalPrice ?> SR</p>
                   </div>
 
-                  <a href="./checkout" class="w-full block text-center bg-primary rounded-xl py-3 px-6 font-semibold text-lg text-white transition-all duration-500 hover:bg-primary">Checkout</a>
+                  <a href="/gamedot/checkout" class="w-full block text-center bg-primary rounded-xl py-3 px-6 font-semibold text-lg text-white transition-all duration-500 hover:bg-primary">Checkout</a>
                 </form>
               </div>
             </div>

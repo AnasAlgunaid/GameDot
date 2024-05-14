@@ -111,7 +111,7 @@
       <!-- Check if user has orders -->
       <?php if (empty($orders)) : ?>
         <div class="text-center mt-8">
-          <h2 class="text-2xl mb-4 text-gray-400">You don't have any orders yet.</h2>
+          <h2 class="text-xl mb-4 text-gray-400">You don't have any orders yet.</h2>
         </div>
       <?php else : ?>
         <div class="flex flex-col mt-6">
@@ -135,7 +135,7 @@
                     foreach ($orders as $order) : ?>
                       <tr>
                         <?php foreach ($ordersColumns as $dbcolumn => $column) : ?>
-                          <td class='px-4 py-4 text-sm font-medium text-gray-300 whitespace-nowrap hover:text-primary duration-300'><a href="/gamedot/admin/orders/<?= $order['id'] ?>"><?= $order[$dbcolumn]  ?></a></td>
+                          <td class='px-4 py-4 text-sm font-medium text-gray-300 whitespace-nowrap hover:text-primary duration-300'><a href="/gamedot/orders/<?= $order['id'] ?>"><?= $order[$dbcolumn] ?></a></td>
                         <?php endforeach; ?>
                       </tr>
                     <?php endforeach; ?>

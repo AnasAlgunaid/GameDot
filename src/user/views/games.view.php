@@ -4,7 +4,7 @@
 
     <!-- Search field -->
     <form action="" method="get" class="relative ">
-      <input type="text" name="search" id="search" value="<?= $search ?>" class="bg-secondaryBlack w-full  px-4 py-4 rounded-lg focus:outline-none focus:ring-primary focus:border-primary " placeholder="Search for games">
+      <input type="text" name="search" id="search" value="<?= $search ?>" class="bg-secondaryBlack mt-4 block w-full p-4 border border-gray-800 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" placeholder="Search for games">
       <button type="submit" class="absolute right-0 top-0 h-full px-4 py-2 hover:text-primary duration-300">
         <i class="fi fi-rr-search"></i>
       </button>
@@ -39,7 +39,7 @@
     <!-- Check if there is no gmaes -->
     <?php if (empty($games)) : ?>
       <div class="text-center">
-        <h2 class="text-2xl mb-4 text-gray-400">No games found</h2>
+        <h2 class="text-lg mb-4 text-gray-400"> No games found try another search</h2>
       </div>
     <?php endif; ?>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

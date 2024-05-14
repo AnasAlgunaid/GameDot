@@ -142,16 +142,11 @@ $orders = $database->query($query, ['user_id' => $user_id])->qAll();
 // Define the columns of the orders table
 $ordersColumns = [
   'id' => "ID",
-  'user_email' => "User Email",
   'total_price' => "Total Price",
   'order_date' => "Order Date",
   'payment_method' => "Payment Method",
   'items' => "Items"
 ];
 
-// Add email to the orders 
-foreach ($orders as $key => $order) {
-  $orders[$key]['user_email'] = $user['email'];
-}
 
 require('src/user/views/profile.view.php');

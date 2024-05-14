@@ -1,12 +1,13 @@
 <?php
 $title = 'Order Page';
+
 $orderColumns = [
-  'id' => "ID",
-  'user_email' => "User Email",
-  'total_price' => "Total Price",
-  'order_date' => "Order Date",
-  'payment_method' => "Payment Method",
-  'items' => "Items"
+    'id' => "ID",
+    'user_email' => "User Email",
+    'total_price' => "Total Price",
+    'order_date' => "Order Date",
+    'payment_method' => "Payment Method",
+    'items' => "Items"
 ];
 
 $database = new Database();
@@ -34,10 +35,10 @@ $order = $database->query($query, ['order_id' => $order_id])->qOrAbort();
 
 
 $orderItemsColumns = [
-  'game_id' => "Game ID",
-  'game_name' => "Game Name",
-  'quantity' => "Quantity",
-  'subtotal' => "Subtotal",
+    'game_id' => "Game ID",
+    'game_name' => "Game Name",
+    'game_code' => "Game Code",
+    'subtotal' => "Subtotal",
 ];
 
 // Get order items
