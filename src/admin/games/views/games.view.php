@@ -1,4 +1,12 @@
 <?php require(getHeaderPath()) ?>
+<!-- Success Message -->
+<?php if (isset($_SESSION['addGameSuccess'])) : ?>
+  <div class="bg-emerald-500  text-white px-4 py-3 mb-4 rounded relative" role="alert">
+    <strong class="font-bold">Success!</strong>
+    <span class="block sm:inline"><?= $_SESSION['addGameSuccess'] ?></span>
+  </div>
+  <?php unset($_SESSION['addGameSuccess']); ?>
+<?php endif; ?>
 
 <main>
   <!-- Manage games -->

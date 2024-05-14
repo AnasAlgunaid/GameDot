@@ -57,9 +57,6 @@
       Don't have an account? <a href="./signup" class="text-primary">Sign Up</a>
     </p>
     <p class="mt-4">
-      <a href="./forgot-password" class="text-primary">Forgot Password?</a>
-    </p>
-    <p class="mt-4">
       <a href="./admin/signin" class="text-primary">Admin Portal</a>
     </p>
   </div>
