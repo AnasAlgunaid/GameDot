@@ -8,6 +8,15 @@
   <?php unset($_SESSION['addGameSuccess']); ?>
 <?php endif; ?>
 
+<!-- Success Message -->
+<?php if (isset($_SESSION['deleteSuccess'])) : ?>
+  <div class="bg-emerald-500  text-white px-4 py-3 mb-4 rounded relative" role="alert">
+    <strong class="font-bold">Success!</strong>
+    <span class="block sm:inline"><?= $_SESSION['deleteSuccess'] ?></span>
+  </div>
+  <?php unset($_SESSION['deleteSuccess']); ?>
+<?php endif; ?>
+
 <main>
   <!-- Manage games -->
   <div class="xl:container mx-auto p-8">
@@ -68,9 +77,12 @@
                             <i class="fi fi-rr-edit"></i>
                           </button>
 
-                          <button class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none text-base">
-                            <i class="fi fi-rr-trash "></i>
-                          </button>
+                          <form action="" method="POST">
+                            <input type="hidden" name="delete_game" value="<?= $game['id'] ?>">
+                            <button type="submit" name="delete_game_form" class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none text-base">
+                              <i class="fi fi-rr-trash "></i>
+                            </button>
+                          </form>
 
                         </div>
                       </td>

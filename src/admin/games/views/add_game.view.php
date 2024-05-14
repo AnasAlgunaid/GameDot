@@ -114,17 +114,5 @@
   </div>
 </main>
 
-<!-- Scripts -->
-<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-<!-- <script>
-  FilePond.registerPlugin(FilePondPluginImagePreview);
-  // Get a reference to the file input element
-  const inputElement = document.querySelectorAll('input[type="file"]');
 
-  // Create a FilePond instance
-  for (let i = 0; i < inputElement.length; i++) {
-    FilePond.create(inputElement[i]);
-  }
-</script> -->
 <?php require(getFooterPath()) ?>

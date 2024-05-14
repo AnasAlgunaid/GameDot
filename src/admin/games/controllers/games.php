@@ -14,6 +14,26 @@ $gamesColumns = [
 
 // Database connection
 $database = new Database();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['delete_game_form'])) {
+        if (isset($_POST['delete_game'])) {
+
+
+            // Delete the game
+            $query = 'DELETE FROM games WHERE id = :id';
+            $database->query($query, ['id' => $_POST['delete_game']])->q();
+
+            // Set success message
+            $_SESSION['deleteSuccess'] = 'Game deleted successfully';
+
+            header("Location: /gamedot/admin/games/");
+            exit;
+        }
+    }
+}
+
+
 $query = 'SELECT 
     games.*, 
     COUNT(stock.game_id) AS stock
