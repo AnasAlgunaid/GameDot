@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: May 12, 2024 at 11:10 PM
+-- Generation Time: May 14, 2024 at 06:07 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -49,7 +49,7 @@ INSERT INTO `admins` (`id`, `fname`, `lname`, `email`, `password`) VALUES
 --
 
 CREATE TABLE `carts` (
-  `cart_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -57,12 +57,13 @@ CREATE TABLE `carts` (
 -- Dumping data for table `carts`
 --
 
-INSERT INTO `carts` (`cart_id`, `user_id`) VALUES
+INSERT INTO `carts` (`id`, `user_id`) VALUES
 (1, 1),
 (2, 2),
 (3, 3),
 (4, 4),
-(5, 5);
+(5, 5),
+(6, 8);
 
 -- --------------------------------------------------------
 
@@ -71,7 +72,7 @@ INSERT INTO `carts` (`cart_id`, `user_id`) VALUES
 --
 
 CREATE TABLE `cart_items` (
-  `cart_item_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `cart_id` int(11) DEFAULT NULL,
   `game_id` int(11) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL
@@ -81,12 +82,13 @@ CREATE TABLE `cart_items` (
 -- Dumping data for table `cart_items`
 --
 
-INSERT INTO `cart_items` (`cart_item_id`, `cart_id`, `game_id`, `quantity`) VALUES
+INSERT INTO `cart_items` (`id`, `cart_id`, `game_id`, `quantity`) VALUES
 (1, 1, 1, 2),
 (2, 2, 2, 1),
 (3, 3, 3, 1),
 (4, 4, 4, 1),
-(5, 5, 5, 1);
+(5, 5, 5, 1),
+(19, 6, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -246,7 +248,7 @@ CREATE TABLE `order_items` (
   `id` int(11) NOT NULL,
   `game_id` int(11) DEFAULT NULL,
   `order_id` int(11) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
+  `game_code` varchar(50) NOT NULL,
   `subtotal` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -254,13 +256,13 @@ CREATE TABLE `order_items` (
 -- Dumping data for table `order_items`
 --
 
-INSERT INTO `order_items` (`id`, `game_id`, `order_id`, `quantity`, `subtotal`) VALUES
-(1, 1, 1, 1, 49.99),
-(2, 2, 2, 1, 59.99),
-(3, 3, 3, 1, 59.99),
-(4, 4, 4, 1, 39.99),
-(5, 5, 5, 1, 49.99),
-(6, 3, 1, 2, 35.25);
+INSERT INTO `order_items` (`id`, `game_id`, `order_id`, `game_code`, `subtotal`) VALUES
+(1, 1, 1, '1', 49.99),
+(2, 2, 2, '1', 59.99),
+(3, 3, 3, '1', 59.99),
+(4, 4, 4, '1', 39.99),
+(5, 5, 5, '1', 49.99),
+(6, 3, 1, '2', 35.25);
 
 -- --------------------------------------------------------
 
@@ -274,7 +276,7 @@ CREATE TABLE `reviews` (
   `user_id` int(11) DEFAULT NULL,
   `rating` int(11) DEFAULT NULL,
   `review_text` text DEFAULT NULL,
-  `review_date` date DEFAULT NULL
+  `review_date` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -285,7 +287,8 @@ INSERT INTO `reviews` (`id`, `game_id`, `user_id`, `rating`, `review_text`, `rev
 (1, 1, 1, 5, 'Great game!', '2023-07-05'),
 (3, 3, 3, 5, 'Best game ever!', '2023-07-15'),
 (4, 4, 4, 4, 'Fantastic story!', '2023-07-20'),
-(5, 5, 5, 5, 'Incredible graphics!', '2023-07-25');
+(5, 5, 5, 5, 'Incredible graphics!', '2023-07-25'),
+(17, 1, 8, 4, '', '2024-05-13');
 
 -- --------------------------------------------------------
 
@@ -304,7 +307,6 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`id`, `game_code`, `game_id`) VALUES
-(2, 'AJEK3424kEk241', 2),
 (3, 'AJEK3424kEk573', 5),
 (4, 'AJEK3424kEk249', 1),
 (6, 'adsdaad', 1),
@@ -345,12 +347,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `password`, `dob`) VALUES
-(1, 'John', 'Doe', 'john@example.com', 'password123', '1990-01-01'),
+(1, 'John', 'Doe', 'john@example.com', '$2y$10$Na815mjRt3VEeWK9Qsrpquj1CxaMXLBUs6Qeq6GT2mRwXSaoBH2oK', '1990-01-01'),
 (2, 'Jane', 'Smith', 'jane@example.com', 'password456', '1995-05-15'),
 (3, 'Alice', 'Johnson', 'alice@example.com', 'password789', '1988-08-20'),
 (4, 'Bob', 'Williams', 'bob@example.com', 'password321', '1992-03-10'),
 (5, 'Emma', 'Brown', 'emma@example.com', 'password654', '1997-11-25'),
-(8, 'Anasssssssssss', 'Algunaid', 'anas@algunaid.com', '$2y$10$Na815mjRt3VEeWK9Qsrpquj1CxaMXLBUs6Qeq6GT2mRwXSaoBH2oK', '2009-02-03'),
+(8, 'Anas', 'Algunaid', 'anas@algunaid.com', '$2y$10$Na815mjRt3VEeWK9Qsrpquj1CxaMXLBUs6Qeq6GT2mRwXSaoBH2oK', '2009-02-03'),
 (9, 'Anas', 'Algunaid', 'aljunaidanas@gmail.com', '$2y$10$loHRo0g.LAVsHqmf/2HY5emQxoK3e9Hb1yDVoRou5/sYb6Pvu4ara', '2009-02-03');
 
 --
@@ -368,14 +370,14 @@ ALTER TABLE `admins`
 -- Indexes for table `carts`
 --
 ALTER TABLE `carts`
-  ADD PRIMARY KEY (`cart_id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  ADD PRIMARY KEY (`cart_item_id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `cart_id` (`cart_id`),
   ADD KEY `game_id` (`game_id`);
 
@@ -456,13 +458,13 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `games`
@@ -498,7 +500,7 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `stock`
@@ -526,7 +528,7 @@ ALTER TABLE `carts`
 -- Constraints for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  ADD CONSTRAINT `cart_items_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`cart_id`),
+  ADD CONSTRAINT `cart_items_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`id`),
   ADD CONSTRAINT `cart_items_ibfk_2` FOREIGN KEY (`game_id`) REFERENCES `games` (`id`);
 
 --
