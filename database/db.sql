@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: May 14, 2024 at 09:57 PM
+-- Generation Time: May 14, 2024 at 09:59 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -250,14 +250,6 @@ CREATE TABLE `orders` (
   `order_date` date DEFAULT current_timestamp(),
   `payment_method` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`id`, `user_id`, `total_price`, `order_date`, `payment_method`) VALUES
-(1, 1, 49.99, '2023-07-10', 'Credit Card'),
-(26, 8, 30, '2024-05-14', 'Credit Card');
 
 -- --------------------------------------------------------
 
