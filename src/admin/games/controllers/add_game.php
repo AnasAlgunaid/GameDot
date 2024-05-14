@@ -54,6 +54,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       throw new Exception("Validation failed");
     }
 
+    // Check if the main image is set
+    if (!isset($_FILES['mainImage'])) {
+      throw new Exception("Main image is required");
+    }
+
     // Get the main image
     $mainImage = $_FILES['mainImage'];
 
@@ -62,14 +67,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       throw new Exception(validateImage($mainImage));
     }
 
-    // Validate the count of the main image
-    // die(var_dump($mainImage['name']));
-    // if (count($mainImage['name']) > 1) {
-    //   throw new Exception("Only one main image allowed");
-    // }
-
     // Get the screenshots
     $screenshots = $_FILES['screenshots'];
+
+    // Check if the screenshots are set
+    if (!isset($screenshots)) {
+      throw new Exception("Screenshots are required");
+    }
 
     // Validate the Screenshots
     if (validateImages($screenshots)) {
