@@ -19,9 +19,9 @@
     </div>
     <div class="grid grid-cols-1 min-[320px]:grid-cols-2 min-[540px]:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 text-lg sm:text-xl md:text-2xl">
       <?php foreach ($genres as $genre) : ?>
-        <div class="h-40 <?= $genresColors[strtolower($genre['name'])] ?> rounded-lg  flex justify-center items-center font-bold hover:scale-[1.02] cursor-pointer duration-300 ">
+        <a href="/gamedot/games?genre=<?= $genre['name'] ?>" class="h-40 <?= $genresColors[strtolower($genre['name'])] ?> rounded-lg  flex justify-center items-center font-bold hover:scale-[1.02] cursor-pointer duration-300 ">
           <?= $genre['name'] ?>
-        </div>
+        </a>
       <?php endforeach; ?>
 
     </div>

@@ -10,7 +10,7 @@
       </button>
     </form>
     <!--  clear button -->
-    <?php if (isset($_GET["search"])) : ?>
+    <?php if (isset($_GET["search"]) || isset($_GET["genre"])) : ?>
       <a href="./games" class="border border-primary
     px-2 py-2 rounded-lg text-primary hover:text-white hover:bg-primary duration-300 flex justify-center items-center max-w-32 gap-2 my-4 ">
         <i class="fi fi-rr-eraser mt-1"></i>
@@ -24,7 +24,7 @@
     <div class="flex justify-between items-center mt-8 mb-4 flex-col sm:flex-row ">
       <div>
         <h2 class="text-2xl font-bold mb-4 inline-block relative pb-1">
-          All Games
+          <?= isset($_GET['genre']) ? $_GET['genre'] : 'All' ?> Games
           <span class="absolute bottom-0 left-0 w-1/2 h-0.5 bg-primary"></span>
         </h2>
       </div>

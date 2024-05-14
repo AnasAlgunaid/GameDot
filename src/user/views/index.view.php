@@ -38,9 +38,9 @@
     <div class="gliderGenres">
 
       <?php foreach ($genres as $genre) : ?>
-        <div class="py-20 mx-2 text-2xl <?= $genresColors[strtolower($genre['name'])] ?> rounded-lg  flex justify-center items-center font-bold hover:scale-[1.02] cursor-pointer duration-300 h-full">
+        <a href="/gamedot/games?genre=<?= $genre['name'] ?>" class="py-20 mx-2 text-2xl <?= $genresColors[strtolower($genre['name'])] ?> rounded-lg  flex justify-center items-center font-bold hover:scale-[1.02] cursor-pointer duration-300 h-full">
           <?= $genre['name'] ?>
-        </div>
+        </a>
       <?php endforeach ?>
 
     </div>
