@@ -3,7 +3,7 @@
 class Database
 {
   private $host = 'localhost';
-  private $db_name = 'testforweb';
+  private $db_name = 'gamedot';
   private $port = '3308';
   private $username = 'root';
   private $password = '';

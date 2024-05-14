@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: May 14, 2024 at 08:43 PM
+-- Generation Time: May 14, 2024 at 09:57 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `testforweb`
+-- Database: `gamedot`
 --
 
 -- --------------------------------------------------------
@@ -59,10 +59,6 @@ CREATE TABLE `carts` (
 
 INSERT INTO `carts` (`id`, `user_id`) VALUES
 (1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
 (6, 8);
 
 -- --------------------------------------------------------
@@ -77,18 +73,6 @@ CREATE TABLE `cart_items` (
   `game_id` int(11) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `cart_items`
---
-
-INSERT INTO `cart_items` (`id`, `cart_id`, `game_id`, `quantity`) VALUES
-(1, 1, 1, 2),
-(2, 2, 2, 1),
-(3, 3, 3, 1),
-(4, 4, 4, 1),
-(5, 5, 5, 1),
-(34, 6, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -113,11 +97,12 @@ CREATE TABLE `games` (
 --
 
 INSERT INTO `games` (`id`, `name`, `description`, `platform`, `price`, `main_image_url`, `age_rating`, `publisher`, `release_date`) VALUES
-(1, 'The Witcher 3: Wild Hunt', 'An open-world action RPG', 'PC', '24.25', 'https://image.api.playstation.com/vulcan/ap/rnd/202211/0714/S1jCzktWD7XJSRkz4kNYNVM0.png', 18, '', '2024-05-03'),
-(2, 'Grand Theft Auto V', 'An action-adventure game', 'PS4, PS5', '60.00', 'https://image.api.playstation.com/cdn/UP1004/CUSA00419_00/bTNSe7ok8eFVGeQByA5qSzBQoKAAY32R.png', 18, '', '2024-05-03'),
-(3, 'Red Dead Redemption 2', 'An action-adventure game set in the Wild West', 'Xbox', '76.99', 'https://image.api.playstation.com/cdn/UP1004/CUSA03041_00/Hpl5MtwQgOVF9vJqlfui6SDB5Jl4oBSq.png', 18, '', '2024-05-03'),
-(4, 'Assassin\'s Creed Odyssey', 'An action role-playing game set in ancient Greece', 'Nintendo switch', '12.99', 'https://image.api.playstation.com/cdn/EP0001/CUSA12041_00/beKFJcUnDCeYElmY5Dd559T5mzO0mR9X.png', 18, '', '2024-05-03'),
-(5, 'The Last of Us Part II', 'An action-adventure game set in a post-apocalyptic world', 'PS5', '30.00', 'https://image.api.playstation.com/vulcan/ap/rnd/202312/0117/315718bce7eed62e3cf3fb02d61b81ff1782d6b6cf850fa4.png', 18, '', '2024-05-03');
+(22, 'Fortnite Battle Royale', 'Fortnite is a third-person shooter game where up to 100 players compete to be the last person or team standing. You can compete alone or join a team of up to four. You progress through the game by exploring the island, collecting weapons, building fortifications and engaging in combat with other players. You can make purchases for access to the full game or for bonus weapons. Players communicate with other players through online messaging or voice chat. Fortnite Battle Royale is a free version of the Fortnite game. ', 'PC', '40.00', '/gamedot/media/games/6643bd6784291_803e41fee0edf8f8ed1de518e6eac60d.png', 3, 'Epic Games', '2019-11-11'),
+(23, 'The Witcher 3: Wild Hunt', 'Trained from early childhood and mutated to gain superhuman skills, strength, and reflexes, witchers are a counterbalance to the monster-infested world in which they live. Gruesomely destroy foes as a professional monster hunter armed with a range of upgradeable weapons, mutating potions, and combat magic.', 'PS4, PS5', '190.00', '/gamedot/media/games/6643bdfde2c5a_S1jCzktWD7XJSRkz4kNYNVM0.png', 12, 'CD Projekt', '2017-11-02'),
+(24, 'Truck & Logistics Simulator', 'Load, drive, and deliver through a huge open world with up to 24 players in cross-platform multiplayer. Join your friends in exciting heavy transport convoys. Jump into the driver\'s seat of more than 30 unique vehicles and carry out complex loading tasks to deliver a variety of cargo.', ' Aerosoft GmbH', '89.00', '/gamedot/media/games/6643be79ddcd0_gds.png', 3, 'Aerosoft GmbH', '2018-11-03'),
+(25, 'Planet of Lana', 'A young girl and her loyal friend embark on a rescue mission through a colorful world full of cold machines and unfamiliar creatures. Planet of Lana is a cinematic puzzle adventure framed by an epic sci-fi saga that stretches across centuries and galaxies.', 'PS4, PS5', '70.00', '/gamedot/media/games/6643bedd15bbe_uoop.png', 7, ' Thunderful Publishing', '2022-04-03'),
+(26, 'Whisker Waters', 'Whisker Waters is the ultimate RPG adventure that blends light fantasy and the art of fishing into a mesmerizing world. As a player, you\'ll create and play as your very own Cat character and embark on a whimsical fishing journey like never before.', 'PS4, PS5', '73.00', '/gamedot/media/games/6643bf5190036_sret.png', 3, ' Merge Games', '2015-04-04'),
+(27, 'Space Raiders', 'Space Raiders in Space is a wave defense roguelike mixing squad management and tower defence mechanics. Command your almost competent crew to loot weapons and supplies, build defenses, and fight their way through the Bugpocalypse.', 'PC', '30.00', '/gamedot/media/games/6643c0ead61c4_sdsr.png', 12, ' Destructive Creations', '2010-04-08');
 
 -- --------------------------------------------------------
 
@@ -135,11 +120,49 @@ CREATE TABLE `game_genres` (
 --
 
 INSERT INTO `game_genres` (`game_id`, `genre_id`) VALUES
-(1, 1),
-(1, 2),
-(2, 1),
-(3, 1),
-(4, 3);
+(22, 1),
+(22, 2),
+(22, 7),
+(22, 17),
+(22, 18),
+(22, 23),
+(23, 1),
+(23, 2),
+(23, 7),
+(23, 12),
+(23, 18),
+(23, 25),
+(24, 2),
+(24, 3),
+(24, 7),
+(24, 8),
+(24, 9),
+(24, 12),
+(24, 16),
+(24, 17),
+(25, 1),
+(25, 3),
+(25, 4),
+(25, 5),
+(25, 6),
+(25, 8),
+(25, 9),
+(25, 18),
+(25, 20),
+(26, 2),
+(26, 3),
+(26, 4),
+(26, 12),
+(26, 15),
+(26, 17),
+(26, 22),
+(26, 25),
+(27, 6),
+(27, 19),
+(27, 22),
+(27, 24),
+(27, 26),
+(27, 27);
 
 -- --------------------------------------------------------
 
@@ -207,11 +230,12 @@ CREATE TABLE `media` (
 --
 
 INSERT INTO `media` (`media_id`, `game_id`, `media_url`) VALUES
-(1, 1, 'https://cdn1.epicgames.com/offer/14ee004dadc142faaaece5a6270fb628/EGS_TheWitcher3WildHuntCompleteEdition_CDPROJEKTRED_S1_2560x1440-82eb5cf8f725e329d3194920c0c0b64f'),
-(2, 2, 'https://example.com/gta-trailer.png'),
-(3, 3, 'https://example.com/reddead-trailer.png'),
-(4, 4, 'https://example.com/assassinscreed-trailer.png'),
-(5, 5, 'https://example.com/lastofus-trailer.png');
+(27, 22, '/gamedot/media/games/6643bd6784470_fortnite-ch5s2-battle-pass-keyar.png'),
+(28, 23, '/gamedot/media/games/6643bdfde2e7a_fortnite-ch5s2-battle-pass-keyar.png'),
+(29, 24, '/gamedot/media/games/6643be79de0b1_halo-infinite-difficulty-change.jpg'),
+(30, 25, '/gamedot/media/games/6643bedd15deb_header.jpg'),
+(31, 26, '/gamedot/media/games/6643bf519040d_dsds.jpg'),
+(32, 27, '/gamedot/media/games/6643c0ead63eb_spr.jpg');
 
 -- --------------------------------------------------------
 
@@ -233,10 +257,6 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `user_id`, `total_price`, `order_date`, `payment_method`) VALUES
 (1, 1, 49.99, '2023-07-10', 'Credit Card'),
-(2, 2, 59.99, '2023-07-11', 'PayPal'),
-(3, 3, 59.99, '2023-07-12', 'Credit Card'),
-(4, 4, 39.99, '2023-07-13', 'PayPal'),
-(5, 5, 49.99, '2023-07-14', 'Credit Card'),
 (26, 8, 30, '2024-05-14', 'Credit Card');
 
 -- --------------------------------------------------------
@@ -253,19 +273,6 @@ CREATE TABLE `order_items` (
   `subtotal` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `order_items`
---
-
-INSERT INTO `order_items` (`id`, `game_id`, `order_id`, `game_code`, `subtotal`) VALUES
-(1, 1, 1, '1', 49.99),
-(2, 2, 2, '1', 59.99),
-(3, 3, 3, '1', 59.99),
-(4, 4, 4, '1', 39.99),
-(5, 5, 5, '1', 49.99),
-(6, 3, 1, '2', 35.25),
-(22, 5, 26, 'thrutrey', 30);
-
 -- --------------------------------------------------------
 
 --
@@ -280,17 +287,6 @@ CREATE TABLE `reviews` (
   `review_text` text DEFAULT NULL,
   `review_date` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `reviews`
---
-
-INSERT INTO `reviews` (`id`, `game_id`, `user_id`, `rating`, `review_text`, `review_date`) VALUES
-(1, 1, 1, 5, 'Great game!', '2023-07-05'),
-(3, 3, 3, 5, 'Best game ever!', '2023-07-15'),
-(4, 4, 4, 4, 'Fantastic story!', '2023-07-20'),
-(5, 5, 5, 5, 'Incredible graphics!', '2023-07-25'),
-(17, 1, 8, 4, '', '2024-05-13');
 
 -- --------------------------------------------------------
 
@@ -309,7 +305,24 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`id`, `game_code`, `game_id`) VALUES
-(45, 'sfadfsds', 4);
+(50, 'm2AqSRhyNBSSJOSf', 22),
+(51, '2iKPgawQh6l1hsmj', 22),
+(52, 'dMilC23w7kqpW6dv', 22),
+(53, 'OItnT4AG12wHdOXt', 22),
+(54, 'hW8opULWBfg8ZcX4', 22),
+(55, 'C9NR2DDqh9inVtGK', 23),
+(56, 'BCErEA2ZWN6h5gr7', 23),
+(57, 'QZAVOzv0L1ACuxJ6', 23),
+(58, 'IEPUXoW0OEGIznaT', 24),
+(59, 'TrvToPwWxG3KcjvP', 24),
+(60, 'ykuJhsWheVDiSChD', 24),
+(61, '1z5rbsJ95XCD8N5R', 25),
+(62, 'bnbcqVyvCbCw5m5V', 25),
+(63, 'T7F1BO7WYMXo2BEI', 25),
+(64, 'UgZvOjMFwmAOQ2gi', 26),
+(65, '53nm5ni18Vus2hkP', 26),
+(66, 'b7NFFSOiHOUIRrOS', 27),
+(67, '2eKsTjoUeUM4phIy', 27);
 
 -- --------------------------------------------------------
 
@@ -332,10 +345,6 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `password`, `dob`) VALUES
 (1, 'John', 'Doe', 'john@example.com', '$2y$10$Na815mjRt3VEeWK9Qsrpquj1CxaMXLBUs6Qeq6GT2mRwXSaoBH2oK', '1990-01-01'),
-(2, 'Jane', 'Smith', 'jane@example.com', 'password456', '1995-05-15'),
-(3, 'Alice', 'Johnson', 'alice@example.com', 'password789', '1988-08-20'),
-(4, 'Bob', 'Williams', 'bob@example.com', 'password321', '1992-03-10'),
-(5, 'Emma', 'Brown', 'emma@example.com', 'password654', '1997-11-25'),
 (8, 'Anas', 'Algunaid', 'anas@algunaid.com', '$2y$10$Na815mjRt3VEeWK9Qsrpquj1CxaMXLBUs6Qeq6GT2mRwXSaoBH2oK', '2009-02-03'),
 (9, 'Anas', 'Algunaid', 'aljunaidanas@gmail.com', '$2y$10$loHRo0g.LAVsHqmf/2HY5emQxoK3e9Hb1yDVoRou5/sYb6Pvu4ara', '2009-02-03');
 
@@ -454,7 +463,7 @@ ALTER TABLE `cart_items`
 -- AUTO_INCREMENT for table `games`
 --
 ALTER TABLE `games`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `genres`
@@ -466,7 +475,7 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `media_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `media_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -490,7 +499,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `users`
