@@ -37,7 +37,7 @@
                 <div class="grid grid-cols-2 gap-4">
                   <div>
                     <label for="expiry_date" class="text-x1 text-gray-300">Expiry Date</label>
-                    <input type="date" id="expiry_date" name="expiry_date" class="px-4 py-3.5 bg-secondaryBlack border-gray-800 text-white w-full text-sm border rounded-md focus:border-purple-500 outline-none" />
+                    <input type="month" id="expiry_date" name="expiry_date" class="px-4 py-3.5 bg-secondaryBlack border-gray-800 text-white w-full text-sm border rounded-md focus:border-purple-500 outline-none" />
                   </div>
                   <div>
                     <label for="cvv" class="text-x1 text-gray-300">CVV</label>
@@ -71,4 +71,25 @@
     </div>
   </div>
 </main>
+
+<script>
+  // Get the current date
+  var currentDate = new Date();
+
+  // Calculate the next month
+  var nextMonth = currentDate.getMonth() + 2;
+
+  // If it's December, set the next year and month to January
+  var nextYear = currentDate.getFullYear();
+  if (nextMonth === 12) {
+    nextMonth = 0; // January
+    nextYear++;
+  }
+
+  // Set the minimum month in YYYY-MM format
+  var minMonth = nextYear + '-' + ('0' + nextMonth).slice(-2);
+
+  // Set the minimum attribute of the input element
+  document.getElementById('expiry_date').setAttribute('min', minMonth);
+</script>
 <?php require(getFooterPath()) ?>
